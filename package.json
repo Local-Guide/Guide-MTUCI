@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "version": "1.0.0",
+  "homepage": "https://local-guide.github.io/frontend/",
   "dependencies": {
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
