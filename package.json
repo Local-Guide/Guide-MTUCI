@@ -6,9 +6,16 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "bounds": "^3.0.0",
+    "center": "^0.0.0",
+    "jsx": "^0.9.89",
+    "leaflet": "^1.8.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-leaflet": "^4.0.0",
+    "react-leaflet-draw": "^0.19.8",
     "react-scripts": "5.0.1",
+    "tsx": "^1.0.0",
     "typescript": "^4.4.2"
   },
   "scripts": {
@@ -49,6 +56,7 @@
     ]
   },
   "devDependencies": {
+    "@types/leaflet": "^1.7.9",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.0.0",
     "eslint": "^8.2.0",
