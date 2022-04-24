@@ -7,7 +7,7 @@ export default function Map() {
     return (
         <div className='Map'>
             <svg>		
-                <Popup className='transition' trigger={<polygon className='change' data-id="1" points="19,69 65,69 65,352 19,352"> </polygon>} position="left center">
+                <Popup className='transition' trigger={<polygon className='change' data-id="1" points="19,69 65,69 65,352 19,352"> </polygon>} position="top center">
                     <div>3а</div>
                 </Popup>
                 <Popup className='transition' trigger={<polygon className='change' data-id="2" points="94,152 267,152 267,207 233,207 233,352 94,352"> </polygon>} position="top center">
@@ -31,7 +31,7 @@ export default function Map() {
                 <Popup className='transition' trigger={<polygon className='change' data-id="8" points="318,86 375,86 375,140 318,140"> </polygon>} position="top center">
                     <div>Ванная комната</div>
                 </Popup>
-                <Popup className='transition' trigger={<polygon className='change' data-id="9" points="489,82 674,82 674,352 511,352 511,196 489,196"> </polygon>} position="right center">
+                <Popup className='transition' trigger={<polygon className='change' data-id="9" points="489,82 674,82 674,352 511,352 511,196 489,196"> </polygon>} position="top center">
                     <div>Комната 1</div>
                 </Popup>
             </svg>
