@@ -1,11 +1,15 @@
-import React from 'react'
+import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
+
+// Styles
 import './index.css'
-import App from './screens/App'
+
+// Screens
+import Root from './screens/Root'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <StrictMode>
+    <Root />
+  </StrictMode>
 )
