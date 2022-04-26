@@ -1,0 +1,87 @@
+.Map {
+    height: 393px;
+    width: 738px;
+    margin: 100px auto;
+    position: relative;
+    background-image: url('./room1.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Map svg {
+    position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 393px;
+	width: 738px;
+}
+
+.Map .change {
+    fill: #383838;
+	cursor: pointer; 
+    transition: all 0.3s ease-in-out 0s;
+    filter: drop-shadow(1px 0px 0px black)
+            drop-shadow(0px 1px 0px black)
+            drop-shadow(-1px 0px 0px black)
+            drop-shadow(0px -1px 0px black)
+}
+
+.Map .change:hover {
+    fill: #a2a5a2;
+}
+
+.text__item {
+    color: white;
+    font-size: 24px;
+    font-family: 'consolas';
+    font-weight: 700;
+    position: relative;
+    width: 0px;
+    height: 0px;
+}
+
+.za {
+    top: 190px;
+    left: 30px;
+}
+
+.third {
+    top: 230px;
+    left: 160px;
+}
+
+.second {
+    top: 260px;
+    left: 300px;
+}
+
+.fourth {
+    top: 260px;
+    left: 440px;
+}
+
+.fifth {
+    top: 103px;
+    left: 283px;
+}
+
+.sixth {
+    top: 98px;
+    left: 340px;
+}
+
+.seveth-a {
+    top: 88px;
+    left: 400px;
+    font-size: 12px;
+}
+
+.seveth {
+    top: 120px;
+    left: 430px;
+}
+
+.first {
+    top: 200px;
+    left: 580px;
+}

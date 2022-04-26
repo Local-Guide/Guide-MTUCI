@@ -8,6 +8,7 @@ import './index.css'
 import Root from './screens/Root'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+// const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <StrictMode>
     <Root />
