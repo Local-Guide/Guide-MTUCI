@@ -1,7 +1,7 @@
 import { Box, Flex } from '@chakra-ui/react'
 import { MapContainer, TileLayer, useMapEvents } from 'react-leaflet'
 
-// styles
+// Styles
 import 'leaflet/dist/leaflet.css'
 
 export default function LeafletMap() {
@@ -34,6 +34,7 @@ export default function LeafletMap() {
 }
 
 function MapInfo() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const map = useMapEvents({
     move: () => {
       // console.warn('location found:', map.getZoom())
