@@ -3,3 +3,7 @@
   background: #e5e5e5;
   outline: 0;
 }
+
+.map {
+  height: 100vh;
+}
