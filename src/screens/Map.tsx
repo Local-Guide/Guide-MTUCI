@@ -38,6 +38,7 @@ function MapInfo({ setCenter, setZoom }: MapInfoProps) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const map = useMapEvents({
     move: () => {
+      // eslint-disable-next-line no-console
       console.warn('location found:', map.getCenter())
       setZoom(map.getZoom())
       setCenter({ x: map.getCenter().lng, y: map.getCenter().lat })
@@ -55,6 +56,7 @@ function MapInfo({ setCenter, setZoom }: MapInfoProps) {
       [-173, 84, 0.2],
       [-88, 106, 0.9],
     ]).addTo(map2)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return null
 }
