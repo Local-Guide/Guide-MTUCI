@@ -1,9 +1,41 @@
 .leaflet-container {
   /* Hide map figma crop */
-  background: #e5e5e5;
+  background: #4A5568;
   outline: 0;
 }
 
 .map {
   height: 100vh;
+}
+
+.leaflet-top {
+  margin-top: 20%;
+}
+
+.leaflet-left {
+  margin-left: 50px;
+}
+
+.leaflet-control-zoom {
+  border: none !important;
+  margin-bottom: 15px !important;
+}
+
+.leaflet-bar a:hover {
+  background:#546076 !important;
+}
+
+.leaflet-bar a:first-child {
+  border-bottom: 2px solid #262B38 !important;
+  margin-bottom: 2px;
+}
+
+.leaflet-control-zoom-in, .leaflet-control-zoom-out {
+  background: #627597 !important;
+  border: 2px solid #262B38 !important;
+  color: white !important;
+}
+
+.leaflet-disabled {
+  background:#3f4859 !important;
 }
