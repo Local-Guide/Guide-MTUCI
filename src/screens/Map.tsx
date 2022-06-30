@@ -1,7 +1,7 @@
 import { type Dispatch, type SetStateAction, useState, useEffect } from 'react'
 import l from 'leaflet'
 import 'leaflet.heat'
-import { MapContainer, TileLayer, useMapEvents, useMap } from 'react-leaflet'
+import { MapContainer, TileLayer, useMapEvents } from 'react-leaflet'
 
 // Styles
 import 'leaflet/dist/leaflet.css'
@@ -24,9 +24,7 @@ export default function LeafletMap() {
     >
       <MapInfo setZoom={setZoom} setCenter={setCenter} />
       <TileLayer
-        // url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
         url={`${process.env.PUBLIC_URL}/imgs/{z}/{x}-{y}.png`}
-        // url="https://map.aviapark.com/tiles/1@2x/{z}/{x}/{y}.png"
         maxZoom={zoom}
         minZoom={zoom}
       />
@@ -35,29 +33,26 @@ export default function LeafletMap() {
 }
 
 function MapInfo({ setCenter, setZoom }: MapInfoProps) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const map = useMapEvents({
     move: () => {
       // eslint-disable-next-line no-console
-      console.warn('location found:', map.getCenter())
+      // console.warn('map center:', map.getCenter())
       setZoom(map.getZoom())
       setCenter({ x: map.getCenter().lng, y: map.getCenter().lat })
     },
   })
 
-  // Очень странная хрень
-  const map2 = useMap()
+  // Тепловая карта
   useEffect(() => {
     // @ts-ignore
     L.heatLayer([
       [-129, 86, 0.2],
-      [-104, 92, 0.2],
-      [-86, 83, 0.2],
-      [-173, 84, 0.2],
-      [-88, 106, 0.9],
-    ]).addTo(map2)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+      [-104, 92, 0.3],
+      [-86, 83, 0.5],
+      [-173, 84, 0.1],
+      [-88, 106, 0.4],
+    ]).addTo(map)
+  }, [map])
   return null
 }
 
