@@ -9,8 +9,8 @@ import './leafletStyles.css'
 
 export default function LeafletMap() {
   const [center, setCenter] = useState<{ x: number; y: number }>({
-    x: 538,
-    y: -242,
+    x: 257,
+    y: -87,
   })
   const [zoom, setZoom] = useState<number>(1)
 
