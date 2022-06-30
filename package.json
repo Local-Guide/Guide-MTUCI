@@ -1,7 +1,6 @@
 {
   "name": "frontend",
   "version": "1.0.0",
-  "homepage": "https://local-guide.github.io/frontend/",
   "dependencies": {
     "@chakra-ui/react": "^1.8.8",
     "@emotion/react": "^11",
