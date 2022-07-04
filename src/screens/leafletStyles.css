@@ -9,34 +9,44 @@
 }
 
 .leaflet-top {
-  margin-top: 20%;
+  margin-top: 40vh;
 }
 
 .leaflet-left {
-  margin-left: 50px;
+  margin-left: 1vw;
 }
 
-.leaflet-control-zoom {
+.leaflet-bar {
   border: none !important;
-  margin-bottom: 15px !important;
 }
 
-/* .leaflet-bar a:hover {
-  background:#546076 !important;
-} */
-
-
-.leaflet-bar a:first-child {
-  border-bottom: 2px solid #262B38 !important;
-  margin-bottom: 2px;
+.leaflet-control-zoom-in {
+  background: #2d3748ab !important;
+  border: 2px solid #364152ab !important;
+  color: #bfc2c7 !important;
+  margin-bottom: 5px;
+}
+.leaflet-control-zoom-out {
+  background: #4a5568ab !important;
+  border: 2px solid #2d3748ab !important;
+  color: #bfc2c7 !important;
 }
 
-.leaflet-control-zoom-in, .leaflet-control-zoom-out {
-  background: #333D4E!important;
-  border: 2px solid #262B38 !important;
-  color: white !important;
+.leaflet-touch .leaflet-bar a:first-child,
+.leaflet-touch .leaflet-bar a:last-child {
+  border-radius: 5px;
+  box-shadow: 0px 0px 11px 2px #2d3748ab;
 }
 
-.leaflet-disabled, .leaflet-disabled:hover, .leaflet-disabled:active {
-  background:#1e222b !important;
+.leaflet-disabled:hover,
+.leaflet-disabled:active {
+  background: #1e222bab !important;
+}
+
+.leaflet-touch .leaflet-bar a {
+  line-height: 25px;
+}
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+  text-indent: 0px;
 }
