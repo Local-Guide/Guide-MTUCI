@@ -1,0 +1,24 @@
+.autocomplete {
+  background: #2d3748;
+  opacity: 0.9;
+  filter: drop-shadow(9px 7px 20px rgba(0, 0, 0, 0.4));
+  color: white;
+  font-weight: 700;
+  list-style: none;
+  border-radius: 17px;
+  margin-top: 1em;
+  max-height: 10.51em;
+  height: auto;
+  overflow: auto;
+}
+.autocompleteItem {
+  padding-left: 16px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  font-size: 1rem;
+}
+
+.autocompleteItem:hover {
+  background: #252d3b;
+  cursor: pointer;
+}
