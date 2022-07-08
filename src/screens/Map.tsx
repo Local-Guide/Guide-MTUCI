@@ -6,6 +6,10 @@ import {
   useMapEvents,
   ZoomControl,
   SVGOverlay,
+  FeatureGroup,
+  Popup,
+  Circle,
+  Rectangle,
 } from 'react-leaflet'
 import {
   Popover,
@@ -25,6 +29,18 @@ import 'leaflet/dist/leaflet.css'
 import './leafletStyles.css'
 
 export default function LeafletMap() {
+  const popupHead = {
+    // textAlign: 'center',
+    fontWeight: '700',
+    fontSize: '14px',
+    fontFamily: 'Inter',
+    letterSpacing: '2px',
+  }
+  const popupText = {
+    fontSize: '10px',
+    marginTop: '3px',
+    fontFamily: 'Inter',
+  }
   const [center, setCenter] = useState<{ x: number; y: number }>({
     x: 533,
     y: -253,
@@ -34,10 +50,7 @@ export default function LeafletMap() {
   //   533
   // ])
   // const bounds: [[number, number]] = [[center.x, center.y]]
-  const bounds: [[number, number], [number, number]] = [
-    [-258, 523],
-    [-289, 538],
-  ]
+
   const [zoom, setZoom] = useState<number>(1)
   return (
     <MapContainer
@@ -59,23 +72,50 @@ export default function LeafletMap() {
         maxZoom={zoom + 1}
         minZoom={zoom - 1}
       />
-      {/* <Popover>
+
+      <Rectangle
+        bounds={[
+          [-258.5, 538],
+          [-288.5, 523.3],
+        ]}
+      >
+        <Popup>
+          <div style={popupHead}>Кафе-бар</div>
+          <div style={popupText}>
+            Время работы:
+            <br />с 12:00 до 18:00
+          </div>
+        </Popup>
+      </Rectangle>
+      {/* </FeatureGroup> */}
+
+      <Popover>
+        {/* PopoverTrigger открывает содержимое всплывающего окна. Это должен быть интерактивный элемент, такой как «кнопка» или «а». */}
         <PopoverTrigger>
           <Button>
-            <SVGOverlay attributes={{ stroke: 'pink' }} bounds={bounds}>
+            {/* <SVGOverlay attributes={{ stroke: 'pink' }} bounds={bounds}>
               <rect x="0" y="0" width="100%" height="100%" fill="none" />
-            </SVGOverlay>
+              <circle r="5" cx="10" cy="10" fill="red" />
+              <text x="50%" y="50%" stroke="white">
+                xxx
+              </text>
+            </SVGOverlay> */}
+            тык сюда
           </Button>
         </PopoverTrigger>
         <PopoverContent>
+          {/* PopoverArrow — это элемент, который используется в качестве ссылки для позиционирования всплывающего окна. */}
           <PopoverArrow />
+          {/* PopoverHeader — это доступный заголовок или метка для содержимого всплывающего окна, и он сначала объявляется программами чтения с экрана. */}
           <PopoverHeader>Кафешка</PopoverHeader>
           <PopoverCloseButton />
+          {/* PopoverBody — основная область содержимого всплывающего окна. Должен содержать хотя бы один интерактивный элемент. */}
           <PopoverBody>
             <Button colorScheme="blue">Тут можно пожрать</Button>
           </PopoverBody>
         </PopoverContent>
-      </Popover> */}
+      </Popover>
+
       <ZoomControl zoomInTitle="Inrease" zoomOutTitle="Decrease" />
     </MapContainer>
   )
