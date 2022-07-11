@@ -4,22 +4,14 @@ import {
   MapContainer,
   TileLayer,
   useMapEvents,
-  ZoomControl,
-  SVGOverlay,
+  ZoomControl
 } from 'react-leaflet'
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverHeader,
-  PopoverBody,
-  Button,
-  PopoverArrow,
-  PopoverCloseButton,
-} from '@chakra-ui/react'
 
 import Search from './Search'
 import Stairs from './Stairs'
+import Popups from './Popups'
+import PopupsHeading from './PopupsOnlyHeading'
+
 // Styles
 import 'leaflet/dist/leaflet.css'
 import './leafletStyles.css'
@@ -34,11 +26,48 @@ export default function LeafletMap() {
   //   533
   // ])
   // const bounds: [[number, number]] = [[center.x, center.y]]
-  const bounds: [[number, number], [number, number]] = [
-    [-258, 523],
-    [-289, 538],
-  ]
+
   const [zoom, setZoom] = useState<number>(1)
+
+  const contentsPopups = [
+    {
+      bounds: [
+        [-141.2, 513.2],
+        [-174, 498],
+      ],
+      header: 'Кафе-бар',
+      content1: 'Время работы:',
+      content2: 'с 12:00 до 18:00',
+    },
+    {
+      bounds: [
+        [-82.5, 513.3],
+        [-115.1, 497.5],
+      ],
+      header: 'Кафе-бистро',
+      content1: 'Время работы:',
+      content2: 'с 12:00 до 18:00',
+    },
+    {
+      bounds: [
+        [-82.5, 560],
+        [-115.1, 546.5],
+      ],
+      header: 'Деканат “ИТ”',
+      content1: 'Телефоны:',
+      content2: '+7 (495) 925-10-67',
+      additionalСontent: '+7 (495) 925-10-67',
+    },
+  ]
+  const contentsPopupsHeading = [
+    {
+      bounds: [
+        [-82.5, 396.5],
+        [-115.5, 412],
+      ],
+      header: 'Ректор университета',
+    },
+  ]
   return (
     <MapContainer
       // maxBounds={maxBound}
@@ -52,6 +81,20 @@ export default function LeafletMap() {
       <MapInfo setZoom={setZoom} setCenter={setCenter} />
       <Search />
       <Stairs />
+      {contentsPopups.map((e) => (
+        <Popups
+          key={e}
+          bounds={e.bounds}
+          header={e.header}
+          content1={e.content1}
+          content2={e.content2}
+          additionalСontent={e.additionalСontent}
+        />
+      ))}
+      {contentsPopupsHeading.map((e) => (
+        <PopupsHeading key={e} bounds={e.bounds} header={e.header} />
+      ))}
+
       <TileLayer
         // url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
         url={`${process.env.PUBLIC_URL}/imgs/{z}/{x}-{y}.png`}
@@ -59,23 +102,6 @@ export default function LeafletMap() {
         maxZoom={zoom + 1}
         minZoom={zoom - 1}
       />
-      {/* <Popover>
-        <PopoverTrigger>
-          <Button>
-            <SVGOverlay attributes={{ stroke: 'pink' }} bounds={bounds}>
-              <rect x="0" y="0" width="100%" height="100%" fill="none" />
-            </SVGOverlay>
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent>
-          <PopoverArrow />
-          <PopoverHeader>Кафешка</PopoverHeader>
-          <PopoverCloseButton />
-          <PopoverBody>
-            <Button colorScheme="blue">Тут можно пожрать</Button>
-          </PopoverBody>
-        </PopoverContent>
-      </Popover> */}
       <ZoomControl zoomInTitle="Inrease" zoomOutTitle="Decrease" />
     </MapContainer>
   )
