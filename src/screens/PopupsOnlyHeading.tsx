@@ -5,14 +5,13 @@ export default function PopupsHeading({ bounds, header }: any) {
   const popupHead = {
     fontWeight: '700',
     fontSize: '14px',
-    fontFamily: 'Inter',
     letterSpacing: '2px',
-    marginTop: '10px',
-    marginLeft: '9px',
+    marginLeft: '10px',
+    marginRight: '10px',
   }
   return (
     <Rectangle bounds={bounds}>
-      <Popup>
+      <Popup minWidth={70}>
         <Box textAlign="center" style={popupHead}>
           {header}
         </Box>

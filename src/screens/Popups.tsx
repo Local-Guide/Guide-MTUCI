@@ -11,18 +11,16 @@ export default function Popups({
   const popupHead = {
     fontWeight: '700',
     fontSize: '14px',
-    fontFamily: 'Inter',
     letterSpacing: '2px',
   }
   const popupText = {
     fontSize: '10px',
     marginTop: '3px',
-    fontFamily: 'Inter',
   }
 
   return (
     <Rectangle bounds={bounds}>
-      <Popup>
+      <Popup minWidth={160}>
         <Box textAlign="center" style={popupHead}>
           {header}
         </Box>
