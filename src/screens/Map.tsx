@@ -1,10 +1,16 @@
-import { type Dispatch, type SetStateAction, useState, useEffect, useRef } from 'react'
+import {
+  type Dispatch,
+  type SetStateAction,
+  useState,
+  useEffect,
+  useRef,
+} from 'react'
 import l from 'leaflet'
 import {
   MapContainer,
   TileLayer,
   useMapEvents,
-  ZoomControl
+  ZoomControl,
 } from 'react-leaflet'
 
 import Search from './Search'
@@ -36,7 +42,7 @@ export default function LeafletMap() {
 
   const [activeFloor, setActiveFloor] = useState<string>('0')
 
-  const contentsPopups = [
+  const contentsPopupsFloor3 = [
     {
       bounds: [
         [-141.2, 513.2],
@@ -66,7 +72,7 @@ export default function LeafletMap() {
       additionalСontent: '+7 (495) 925-10-67',
     },
   ]
-  const contentsPopupsHeading = [
+  const contentsPopupsFloor3Heading = [
     {
       bounds: [
         [-82.5, 396.5],
@@ -75,11 +81,22 @@ export default function LeafletMap() {
       header: 'Ректор университета',
     },
   ]
+  const contentsPopupsFloor0Heading = [
+    {
+      bounds: [
+        [-82.5, 396.5],
+        [-115.5, 412],
+      ],
+      header: 'Туалет',
+    },
+  ]
 
   const ref = useRef<any>(null)
   useEffect(() => {
     if (ref.current) {
-      ref.current.setUrl(`${process.env.PUBLIC_URL}/imgs/${activeFloor}/{z}/{x}-{y}.png`)
+      ref.current.setUrl(
+        `${process.env.PUBLIC_URL}/imgs/${activeFloor}/{z}/{x}-{y}.png`
+      )
     }
   }, [activeFloor])
 
@@ -96,19 +113,29 @@ export default function LeafletMap() {
       <MapInfo setZoom={setZoom} setCenter={setCenter} />
       <Search />
       <Stairs setActiveFloor={setActiveFloor} />
-      {contentsPopups.map((e) => (
-        <Popups
-          key={e}
-          bounds={e.bounds}
-          header={e.header}
-          content1={e.content1}
-          content2={e.content2}
-          additionalСontent={e.additionalСontent}
-        />
-      ))}
-      {contentsPopupsHeading.map((e) => (
+      {/* {contentsPopupsFloor3.map((e) => {
+        if (activeFloor === '3') {
+          return (
+            <Popups
+              key={e}
+              bounds={e.bounds}
+              header={e.header}
+              content1={e.content1}
+              content2={e.content2}
+              additionalСontent={e.additionalСontent}
+            />
+          )
+        } else return null
+      })} */}
+
+      {[`contentsPopupsFloor${activeFloor}Heading`].map((e) => (
         <PopupsHeading key={e} bounds={e.bounds} header={e.header} />
       ))}
+
+      {/* {contentsPopupsFloor3Heading.map((e) => (
+        <PopupsHeading key={e} bounds={e.bounds} header={e.header} />
+      ))} */}
+
       <TileLayer
         // url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
         ref={ref}
