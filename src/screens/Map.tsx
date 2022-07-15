@@ -113,22 +113,20 @@ export default function LeafletMap() {
       <MapInfo setZoom={setZoom} setCenter={setCenter} />
       <Search />
       <Stairs setActiveFloor={setActiveFloor} />
+      {/* это тоже не работает(((( */}
       {/* {contentsPopupsFloor3.map((e) => {
-        if (activeFloor === '3') {
-          return (
-            <Popups
-              key={e}
-              bounds={e.bounds}
-              header={e.header}
-              content1={e.content1}
-              content2={e.content2}
-              additionalСontent={e.additionalСontent}
-            />
-          )
-        } else return null
+        if (activeFloor === '3')
+          <Popups
+            key={e}
+            bounds={e.bounds}
+            header={e.header}
+            content1={e.content1}
+            content2={e.content2}
+            additionalСontent={e.additionalСontent}
+          />
       })} */}
 
-      {[`contentsPopupsFloor${activeFloor}Heading`].map((e) => (
+      {[`contentsPopupsFloor${activeFloor}Heading`].map((e: any) => (
         <PopupsHeading key={e} bounds={e.bounds} header={e.header} />
       ))}
 
