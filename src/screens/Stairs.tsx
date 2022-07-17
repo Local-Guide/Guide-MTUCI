@@ -1,6 +1,6 @@
 import { Box, Button, Flex, Text } from '@chakra-ui/react'
 
-function Stairs({setActiveFloor} : any) {
+function Stairs({ setActiveFloor }: any) {
   return (
     <Box
       bg="gray.700"
@@ -39,7 +39,6 @@ function Stairs({setActiveFloor} : any) {
           }}
           onClick={() => {
             setActiveFloor('0')
-
           }}
         >
           0

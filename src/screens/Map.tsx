@@ -1,10 +1,16 @@
-import { type Dispatch, type SetStateAction, useState, useEffect, useRef } from 'react'
+import {
+  type Dispatch,
+  type SetStateAction,
+  useState,
+  useEffect,
+  useRef,
+} from 'react'
 import l from 'leaflet'
 import {
   MapContainer,
   TileLayer,
   useMapEvents,
-  ZoomControl
+  ZoomControl,
 } from 'react-leaflet'
 
 import Search from './Search'
@@ -65,6 +71,16 @@ export default function LeafletMap() {
       content2: '+7 (495) 925-10-67',
       additionalСontent: '+7 (495) 925-10-67',
     },
+    {
+      bounds: [
+        [-90.5, 150],
+        [-118, 136.5],
+      ],
+      header: 'Канцтовары',
+      content1: 'Время работы:',
+      content2: 'Пн-Пт с 9:00 до 17:00',
+      additionalСontent: 'Сб-Вс выходной',
+    },
   ]
   const contentsPopupsHeading = [
     {
@@ -74,12 +90,63 @@ export default function LeafletMap() {
       ],
       header: 'Ректор университета',
     },
+    {
+      bounds: [
+        [-83.5, 310],
+        [-112, 273],
+      ],
+      header: 'Женский туалет',
+    },
+    {
+      bounds: [
+        [-83.5, 271.5],
+        [-112, 230],
+      ],
+      header: 'Мужской туалет',
+    },
+    {
+      bounds: [
+        [-83.5, 188.5],
+        [-112, 151],
+      ],
+      header: 'Тренажерный зал',
+    },
+    {
+      bounds: [
+        [-170, 188.5],
+        [-142, 151],
+      ],
+      header: 'Щитовая',
+    },
+    {
+      bounds: [
+        [-87.5, 321.5],
+        [-114, 282],
+      ],
+      header: 'Туалет',
+    },
+    {
+      bounds: [
+        [-90.5, 347],
+        [-117.5, 361],
+      ],
+      header: 'Туалет',
+    },
+    {
+      bounds: [
+        [-90.5, 232],
+        [-117.5, 217.5],
+      ],
+      header: 'Туалет',
+    },
   ]
 
   const ref = useRef<any>(null)
   useEffect(() => {
     if (ref.current) {
-      ref.current.setUrl(`${process.env.PUBLIC_URL}/imgs/${activeFloor}/{z}/{x}-{y}.png`)
+      ref.current.setUrl(
+        `${process.env.PUBLIC_URL}/imgs/${activeFloor}/{z}/{x}-{y}.png`
+      )
     }
   }, [activeFloor])
 
