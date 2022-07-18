@@ -51,6 +51,7 @@ export default function LeafletMap() {
       header: 'Кафе-бар',
       content1: 'Время работы:',
       content2: 'с 12:00 до 18:00',
+      floor: '3',
     },
     {
       bounds: [
@@ -60,6 +61,7 @@ export default function LeafletMap() {
       header: 'Кафе-бистро',
       content1: 'Время работы:',
       content2: 'с 12:00 до 18:00',
+      floor: '3',
     },
     {
       bounds: [
@@ -70,6 +72,7 @@ export default function LeafletMap() {
       content1: 'Телефоны:',
       content2: '+7 (495) 925-10-67',
       additionalСontent: '+7 (495) 925-10-67',
+      floor: '3',
     },
   ]
   const contentsPopupsFloor3Heading = [
@@ -79,15 +82,91 @@ export default function LeafletMap() {
         [-115.5, 412],
       ],
       header: 'Ректор университета',
+      floor: '3',
     },
   ]
-  const contentsPopupsFloor0Heading = [
+  const contentsPopupsFloor4Heading = [
     {
       bounds: [
-        [-82.5, 396.5],
-        [-115.5, 412],
+        [-91.9, 111.5],
+        [-124.1, 125],
       ],
       header: 'Туалет',
+      floor: '4',
+    },
+    {
+      bounds: [
+        [-91.9, 323],
+        [-124.4, 337],
+      ],
+      header: 'Туалет',
+      floor: '4',
+    },
+    {
+      bounds: [
+        [-91.9, 522],
+        [-124.4, 535],
+      ],
+      header: 'Туалет',
+      floor: '4',
+    },
+    {
+      bounds: [
+        [-91.9, 641],
+        [-124.4, 653],
+      ],
+      header: 'Туалет',
+      floor: '4',
+    },
+  ]
+  const contentsPopupsFloor5Heading = [
+    {
+      bounds: [
+        [-105, 70.5],
+        [-124.5, 83],
+      ],
+      header: 'Туалет',
+      floor: '5',
+    },
+    {
+      bounds: [
+        [-105, 223],
+        [-124.5, 237.5],
+      ],
+      header: 'Туалет',
+      floor: '5',
+    },
+    {
+      bounds: [
+        [-105, 344],
+        [-124.5, 353.5],
+      ],
+      header: 'Туалет',
+      floor: '5',
+    },
+    {
+      bounds: [
+        [-105, 438],
+        [-124.5, 449.5],
+      ],
+      header: 'Туалет',
+      floor: '5',
+    },
+    {
+      bounds: [
+        [-105, 450],
+        [-160.5, 468],
+      ],
+      header: 'Общественная зона',
+      floor: '5',
+    },
+    {
+      bounds: [
+        [-105, 53.5],
+        [-160.5, 69.5],
+      ],
+      header: 'Общественная зона',
+      floor: '5',
     },
   ]
 
@@ -113,26 +192,51 @@ export default function LeafletMap() {
       <MapInfo setZoom={setZoom} setCenter={setCenter} />
       <Search />
       <Stairs setActiveFloor={setActiveFloor} />
-      {/* это тоже не работает(((( */}
-      {/* {contentsPopupsFloor3.map((e) => {
-        if (activeFloor === '3')
-          <Popups
-            key={e}
-            bounds={e.bounds}
-            header={e.header}
-            content1={e.content1}
-            content2={e.content2}
-            additionalСontent={e.additionalСontent}
-          />
-      })} */}
 
-      {[`contentsPopupsFloor${activeFloor}Heading`].map((e: any) => (
-        <PopupsHeading key={e} bounds={e.bounds} header={e.header} />
+      {contentsPopupsFloor3.map((e) => (
+        <Popups
+          key={e}
+          bounds={e.bounds}
+          header={e.header}
+          content1={e.content1}
+          content2={e.content2}
+          additionalСontent={e.additionalСontent}
+          floor={e.floor}
+          checkFloor={activeFloor}
+        />
       ))}
 
-      {/* {contentsPopupsFloor3Heading.map((e) => (
+      {/* {contentsPopupsFloorHeading.map((e: any) => (
         <PopupsHeading key={e} bounds={e.bounds} header={e.header} />
       ))} */}
+
+      {contentsPopupsFloor3Heading.map((e) => (
+        <PopupsHeading
+          key={e}
+          bounds={e.bounds}
+          header={e.header}
+          floor={e.floor}
+          checkFloor={activeFloor}
+        />
+      ))}
+      {contentsPopupsFloor4Heading.map((e) => (
+        <PopupsHeading
+          key={e}
+          bounds={e.bounds}
+          header={e.header}
+          floor={e.floor}
+          checkFloor={activeFloor}
+        />
+      ))}
+      {contentsPopupsFloor5Heading.map((e) => (
+        <PopupsHeading
+          key={e}
+          bounds={e.bounds}
+          header={e.header}
+          floor={e.floor}
+          checkFloor={activeFloor}
+        />
+      ))}
 
       <TileLayer
         // url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
