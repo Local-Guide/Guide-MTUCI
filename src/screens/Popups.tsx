@@ -7,6 +7,8 @@ export default function Popups({
   content1,
   content2,
   additionalСontent,
+  floor,
+  checkFloor,
 }: any) {
   const popupHead = {
     fontWeight: '700',
@@ -18,20 +20,23 @@ export default function Popups({
     marginTop: '3px',
   }
 
-  return (
-    <Rectangle bounds={bounds}>
-      <Popup minWidth={160}>
-        <Box textAlign="center" style={popupHead}>
-          {header}
-        </Box>
-        <Box style={popupText}>
-          {content1}
-          <br />
-          {content2}
-          <br />
-          {additionalСontent}
-        </Box>
-      </Popup>
-    </Rectangle>
-  )
+  if (floor === checkFloor) {
+    return (
+      <Rectangle bounds={bounds}>
+        <Popup minWidth={160}>
+          <Box textAlign="center" style={popupHead}>
+            {header}
+          </Box>
+          <Box style={popupText}>
+            {content1}
+            <br />
+            {content2}
+            <br />
+            {additionalСontent}
+          </Box>
+        </Popup>
+      </Rectangle>
+    )
+  }
+  return null
 }
