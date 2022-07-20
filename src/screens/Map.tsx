@@ -1,7 +1,13 @@
 import { type Dispatch, type SetStateAction, useState } from 'react'
 import l from 'leaflet'
-import { MapContainer, TileLayer, useMapEvents, ZoomControl } from 'react-leaflet'
+import {
+  MapContainer,
+  TileLayer,
+  useMapEvents,
+  ZoomControl,
+} from 'react-leaflet'
 import Search from './Search'
+import Logo from './Logo'
 
 // Styles
 import 'leaflet/dist/leaflet.css'
@@ -23,11 +29,12 @@ export default function LeafletMap() {
       crs={l.CRS.Simple}
       center={[center.y, center.x]}
       zoom={zoom}
-      className='map'
+      className="map"
       attributionControl={false}
       zoomControl={false}
     >
       <MapInfo setZoom={setZoom} setCenter={setCenter} />
+      <Logo />
       <Search />
       <TileLayer
         // url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
@@ -36,7 +43,7 @@ export default function LeafletMap() {
         maxZoom={zoom + 1}
         minZoom={zoom - 1}
       />
-      <ZoomControl zoomInTitle='Inrease' zoomOutTitle='Decrease'/>
+      <ZoomControl zoomInTitle="Inrease" zoomOutTitle="Decrease" />
     </MapContainer>
   )
 }
@@ -47,7 +54,7 @@ function MapInfo({ setCenter, setZoom }: MapInfoProps) {
     move: () => {
       // console.warn('location found:', map.getCenter())
       setZoom(map.getZoom())
-      setCenter({ x: map.getCenter().lng, y: map.getCenter().lat})
+      setCenter({ x: map.getCenter().lng, y: map.getCenter().lat })
     },
   })
   return null
