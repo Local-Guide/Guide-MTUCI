@@ -17,6 +17,7 @@ import Search from './Search'
 import Stairs from './Stairs'
 import Popups from './Popups'
 import PopupsHeading from './PopupsOnlyHeading'
+import Logo from './Logo'
 
 // Styles
 import 'leaflet/dist/leaflet.css'
@@ -266,6 +267,7 @@ export default function LeafletMap() {
       zoomControl={false}
     >
       <MapInfo setZoom={setZoom} setCenter={setCenter} />
+      <Logo />
       <Search />
       <Stairs setActiveFloor={setActiveFloor} />
       {contentsPopupsFloor2.map((e) => (

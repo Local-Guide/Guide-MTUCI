@@ -1,12 +1,6 @@
-import { SetStateAction, type Dispatch } from 'react'
 import { Box, Button, Flex, Text } from '@chakra-ui/react'
 
-// Types
-interface StairsProps {
-  setActiveFloor: Dispatch<SetStateAction<string>>
-}
-
-function Stairs({ setActiveFloor }: StairsProps) {
+function Stairs({ setActiveFloor }: any) {
   return (
     <Box
       bg="gray.700"

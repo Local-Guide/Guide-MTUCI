@@ -1,6 +1,6 @@
 .leaflet-container {
   /* Hide map figma crop */
-  background: #4a5568;
+  background: #4A5568;
   outline: 0;
 }
 
@@ -8,35 +8,71 @@
   height: 100vh;
 }
 
+/* зум */
 .leaflet-top {
-  margin-top: 20%;
+  margin-top: 40vh;
 }
-
 .leaflet-left {
-  margin-left: 50px;
+  margin-left: 1vw;
 }
-
-.leaflet-control-zoom {
+.leaflet-bar {
   border: none !important;
-  margin-bottom: 15px !important;
 }
-
-.leaflet-bar a:hover {
-  background: #546076 !important;
+.leaflet-control-zoom-in {
+  background: #2d3748ab !important;
+  border: 2px solid #364152ab !important;
+  color: #bfc2c7 !important;
+  margin-bottom: 5px;
 }
-
-.leaflet-bar a:first-child {
-  border-bottom: 2px solid #262b38 !important;
-  margin-bottom: 2px;
+.leaflet-control-zoom-out {
+  background: #4a5568ab !important;
+  border: 2px solid #2d3748ab !important;
+  color: #bfc2c7 !important;
 }
-
+.leaflet-touch .leaflet-bar a:first-child,
+.leaflet-touch .leaflet-bar a:last-child {
+  border-radius: 5px;
+  box-shadow: 0px 0px 11px 2px #2d3748ab;
+}
+.leaflet-touch .leaflet-bar a:first-child:hover,
+.leaflet-touch .leaflet-bar a:last-child:hover {
+  background: #1e222bab !important;
+}
+.leaflet-touch .leaflet-bar a {
+  line-height: 25px;
+}
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out {
-  background: #627597 !important;
-  border: 2px solid #262b38 !important;
-  color: white !important;
+  text-indent: 0px;
 }
 
-.leaflet-disabled {
-  background: #3f4859 !important;
+/* попапы */
+.leaflet-interactive {
+  cursor: pointer;
+  fill: #ffffff00;
+  stroke: #ffffff00;
+  stroke-width: 1;
+}
+.leaflet-interactive:hover {
+  fill: #ffffffaa;
+  stroke: #909193bd;
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: #2d3748de;
+  color: #bfc2c7;
+  border-radius: 17px;
+}
+.leaflet-popup-content {
+  margin: 8px 17px 8px 17px;
+  line-height: 1.5;
+  font-size: 1.08333em;
+  font-family: 'Inter';
+  min-height: 1px;
+}
+.leaflet-container a.leaflet-popup-close-button {
+  color: #bfc2c7;
+}
+.leaflet-popup-tip-container {
+  display: none;
 }
