@@ -1,6 +1,12 @@
-import { Button, Flex, Box, Text } from '@chakra-ui/react'
+import { SetStateAction, type Dispatch } from 'react'
+import { Box, Button, Flex, Text } from '@chakra-ui/react'
 
-export default function Stairs() {
+// Types
+interface StairsProps {
+  setActiveFloor: Dispatch<SetStateAction<string>>
+}
+
+function Stairs({ setActiveFloor }: StairsProps) {
   return (
     <Box
       bg="gray.700"
@@ -37,6 +43,9 @@ export default function Stairs() {
           _active={{
             bg: 'rgba(129, 129, 129, 0.2)',
           }}
+          onClick={() => {
+            setActiveFloor('0')
+          }}
         >
           0
         </Button>
@@ -55,6 +64,7 @@ export default function Stairs() {
           _active={{
             bg: 'rgba(129, 129, 129, 0.2)',
           }}
+          onClick={() => setActiveFloor('1')}
         >
           1
         </Button>
@@ -73,6 +83,7 @@ export default function Stairs() {
           _active={{
             bg: 'rgba(129, 129, 129, 0.2)',
           }}
+          onClick={() => setActiveFloor('2')}
         >
           2
         </Button>
@@ -91,6 +102,7 @@ export default function Stairs() {
           _active={{
             bg: 'rgba(129, 129, 129, 0.2)',
           }}
+          onClick={() => setActiveFloor('3')}
         >
           3
         </Button>
@@ -109,6 +121,7 @@ export default function Stairs() {
           _active={{
             bg: 'rgba(129, 129, 129, 0.2)',
           }}
+          onClick={() => setActiveFloor('4')}
         >
           4
         </Button>
@@ -127,6 +140,7 @@ export default function Stairs() {
           _active={{
             bg: 'rgba(129, 129, 129, 0.2)',
           }}
+          onClick={() => setActiveFloor('5')}
         >
           5
         </Button>
@@ -134,3 +148,5 @@ export default function Stairs() {
     </Box>
   )
 }
+
+export default Stairs
