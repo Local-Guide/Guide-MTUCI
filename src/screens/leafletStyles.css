@@ -1,6 +1,6 @@
 .leaflet-container {
   /* Hide map figma crop */
-  background: #4A5568;
+  background: #4a5568;
   outline: 0;
 }
 
@@ -22,20 +22,21 @@
 }
 
 .leaflet-bar a:hover {
-  background:#546076 !important;
+  background: #546076 !important;
 }
 
 .leaflet-bar a:first-child {
-  border-bottom: 2px solid #262B38 !important;
+  border-bottom: 2px solid #262b38 !important;
   margin-bottom: 2px;
 }
 
-.leaflet-control-zoom-in, .leaflet-control-zoom-out {
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
   background: #627597 !important;
-  border: 2px solid #262B38 !important;
+  border: 2px solid #262b38 !important;
   color: white !important;
 }
 
 .leaflet-disabled {
-  background:#3f4859 !important;
+  background: #3f4859 !important;
 }
