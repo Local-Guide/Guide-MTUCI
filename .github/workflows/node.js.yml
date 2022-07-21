@@ -36,6 +36,8 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: 🛠 Build project
+        env:
+          CI: false
         run: yarn build
 
       - name: 🚀 Deploy to branch
