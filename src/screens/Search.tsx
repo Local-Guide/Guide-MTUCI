@@ -4,9 +4,10 @@ import {
   Center,
   InputRightElement,
   Input,
+  UnorderedList,
+  ListItem,
+  background,
 } from '@chakra-ui/react'
-
-import './autocomplete.css'
 
 import { SearchIcon } from '@chakra-ui/icons'
 import { useState } from 'react'
@@ -78,15 +79,34 @@ export default function Search() {
             </InputRightElement>
           </InputGroup>
         </Flex>
-        <ul className="autocomplete">
+        <UnorderedList
+          background="gray.700"
+          opacity="0.9"
+          filter="drop-shadow(9px 7px 20px rgba(0, 0, 0, 0.4))"
+          color="white"
+          fontWeight="700"
+          listStyleType="none"
+          borderRadius="17px"
+          mt="1em"
+          ml="0"
+          maxHeight={{ base: '6.51em', lg: '10.51em' }}
+          h="auto"
+          overflow="auto"
+        >
           {value
             ? fitlerCabinets.map((item, index) => (
-                <li className="autocompleteItem" key={item.id}>
+                <ListItem
+                  key={item.id}
+                  pl="16px"
+                  fontSize={{ base: 'revert', lg: 'md' }}
+                  py={{ base: '3px', lg: '9px' }}
+                  _hover={{ background: '#252d3b', cursor: 'pointer' }}
+                >
                   {item.name}
-                </li>
+                </ListItem>
               ))
             : null}
-        </ul>
+        </UnorderedList>
       </Flex>
     </Center>
   )
