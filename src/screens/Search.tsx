@@ -6,7 +6,6 @@ import {
   Input,
   UnorderedList,
   ListItem,
-  background,
 } from '@chakra-ui/react'
 
 import { SearchIcon } from '@chakra-ui/icons'
