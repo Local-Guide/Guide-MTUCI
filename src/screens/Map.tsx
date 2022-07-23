@@ -23,6 +23,9 @@ import Logo from './Logo'
 import 'leaflet/dist/leaflet.css'
 import './leafletStyles.css'
 
+const Floor4Heading = require('../assets/popups/Floor4Heading.json')
+const Floor5Heading = require('../assets/popups/Floor5Heading.json')
+
 export default function LeafletMap() {
   const [center, setCenter] = useState<{ x: number; y: number }>({
     x: 533,
@@ -162,90 +165,6 @@ export default function LeafletMap() {
       floor: '3',
     },
   ]
-  const contentsPopupsFloorHeading4 = [
-    {
-      bounds: [
-        [-91.9, 111.5],
-        [-124.1, 125],
-      ],
-      header: 'Туалет',
-      floor: '4',
-    },
-    {
-      bounds: [
-        [-91.9, 323],
-        [-124.4, 337],
-      ],
-      header: 'Туалет',
-      floor: '4',
-    },
-    {
-      bounds: [
-        [-91.9, 522],
-        [-124.4, 535],
-      ],
-      header: 'Туалет',
-      floor: '4',
-    },
-    {
-      bounds: [
-        [-91.9, 641.5],
-        [-124.4, 653],
-      ],
-      header: 'Туалет',
-      floor: '4',
-    },
-  ]
-  const contentsPopupsFloorHeading5 = [
-    {
-      bounds: [
-        [-105.5, 70.5],
-        [-124.5, 83],
-      ],
-      header: 'Туалет',
-      floor: '5',
-    },
-    {
-      bounds: [
-        [-105.5, 223],
-        [-124.5, 237.5],
-      ],
-      header: 'Туалет',
-      floor: '5',
-    },
-    {
-      bounds: [
-        [-105.5, 344],
-        [-124.5, 353.5],
-      ],
-      header: 'Туалет',
-      floor: '5',
-    },
-    {
-      bounds: [
-        [-105.5, 438],
-        [-124.5, 449],
-      ],
-      header: 'Туалет',
-      floor: '5',
-    },
-    {
-      bounds: [
-        [-105.5, 450],
-        [-160.5, 468],
-      ],
-      header: 'Общественная зона',
-      floor: '5',
-    },
-    {
-      bounds: [
-        [-105.5, 53.5],
-        [-160.5, 69.5],
-      ],
-      header: 'Общественная зона',
-      floor: '5',
-    },
-  ]
 
   const ref = useRef<any>(null)
   useEffect(() => {
@@ -330,7 +249,7 @@ export default function LeafletMap() {
           checkFloor={activeFloor}
         />
       ))}
-      {contentsPopupsFloorHeading4.map((e) => (
+      {Floor4Heading.map((e: any) => (
         <PopupsHeading
           key={e}
           bounds={e.bounds}
@@ -339,7 +258,7 @@ export default function LeafletMap() {
           checkFloor={activeFloor}
         />
       ))}
-      {contentsPopupsFloorHeading5.map((e) => (
+      {Floor5Heading.map((e: any) => (
         <PopupsHeading
           key={e}
           bounds={e.bounds}
