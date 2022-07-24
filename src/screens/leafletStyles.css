@@ -1,6 +1,6 @@
 .leaflet-container {
   /* Hide map figma crop */
-  background: #4A5568;
+  background: #4a5568;
   outline: 0;
 }
 
@@ -39,7 +39,7 @@
   background: #1e222bab !important;
 }
 .leaflet-touch .leaflet-bar a {
-  line-height: 25px;
+  line-height: normal;
 }
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out {
@@ -62,14 +62,17 @@
   background: #2d3748de;
   color: #bfc2c7;
   border-radius: 17px;
-  min-width: 200px;
 }
 .leaflet-popup-content {
-  margin: 5px 24px 12px 14px;
+  margin: 8px 17px 8px 17px;
   line-height: 1.5;
   font-size: 1.08333em;
+  font-family: 'Inter';
   min-height: 1px;
 }
 .leaflet-container a.leaflet-popup-close-button {
   color: #bfc2c7;
+}
+.leaflet-popup-tip-container {
+  display: none;
 }

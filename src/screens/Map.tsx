@@ -17,17 +17,24 @@ import Search from './Search'
 import Stairs from './Stairs'
 import Popups from './Popups'
 import PopupsHeading from './PopupsOnlyHeading'
-// import zeroFloor from '../assets/imgs/zeroFloor.json'
 
 // Styles
 import 'leaflet/dist/leaflet.css'
 import './leafletStyles.css'
 
+const zeroFloor = require('../assets/popups/zeroFloor.json')
+const firstFloor = require('../assets/popups/firstFloor.json')
+
 export default function LeafletMap() {
   const [center, setCenter] = useState<{ x: number; y: number }>({
-    x: document.documentElement.clientWidth / 2,
-    y: document.documentElement.clientHeight / 2,
+    x: 533,
+    y: -253,
   })
+  // export default function LeafletMap() {
+  //   const [center, setCenter] = useState<{ x: number; y: number }>({
+  //     x: document.documentElement.clientWidth / 2,
+  //     y: document.documentElement.clientHeight / 2,
+  //   })
   // let elem = document.elementFromPoint(x, y)
   // const [maxBound, setMaxBound] = useState<[x: number, y: number]>([
   //   -253,
@@ -41,54 +48,22 @@ export default function LeafletMap() {
   //   1: `${process.env.PUBLIC_URL}/imgs/1/{z}/{x}-{y}.png`,
   //   3: `${process.env.PUBLIC_URL}/imgs/3/{z}/{x}-{y}.png`,
   // }
-  // const PopupsFloor = zeroFloor.contentsPopupsFloor2
-  // {
-  //   PopupsFloor.map(
-  //     (e: {
-  //       bounds: number[][]
-  //       header: string
-  //       content1: string
-  //       content2: string
-  //       additionalСontent: string
-  //       floor: number
-  //     }) => (
-  //       <Popups
-  //         bounds={e.bounds}
-  //         header={e.header}
-  //         content1={e.content1}
-  //         content2={e.content2}
-  //         additionalСontent={e.additionalСontent}
-  //         floor={e.floor}
-  //         checkFloor={activeFloor}
-  //       />
-  //     )
-  //   )
-  // }
-  // function getFileContent(fileName) {
-  //   var request = new XMLHttpRequest()
-  //   request.open('GET', fileName)
-  //   request.onloadend = function () {
-  //     console.log(request.responseText)
-  //   }
-  //   request.send()
-  // }
-  // getFileContent('zeroFloor.json')
 
   const [activeFloor, setActiveFloor] = useState<string>('0')
 
-  // const contentsPopupsFloor2 = [
-  //   {
-  //     bounds: [
-  //       [-90.5, 150],
-  //       [-118, 136.5],
-  //     ],
-  //     header: 'Канцтовары',
-  //     content1: 'Время работы:',
-  //     content2: 'Пн-Пт с 9:00 до 17:00',
-  //     additionalСontent: 'Сб-Вс выходной',
-  //     floor: '2',
-  //   },
-  // ]
+  const contentsPopupsFloor2 = [
+    {
+      bounds: [
+        [-90.5, 150],
+        [-118, 136.5],
+      ],
+      header: 'Канцтовары',
+      content1: 'Время работы:',
+      content2: 'Пн-Пт с 9:00 до 17:00',
+      additionalСontent: 'Сб-Вс выходной',
+      floor: '2',
+    },
+  ]
   const contentsPopupsFloor3 = [
     {
       bounds: [
@@ -120,51 +95,6 @@ export default function LeafletMap() {
       content2: '+7 (495) 925-10-67',
       additionalСontent: '+7 (495) 925-10-67',
       floor: '3',
-    },
-  ]
-
-  const contentsPopupsFloorHeading0 = [
-    {
-      bounds: [
-        [-83.5, 310],
-        [-112, 273],
-      ],
-      header: 'Женский туалет',
-      floor: '0',
-    },
-    {
-      bounds: [
-        [-83.5, 271.5],
-        [-112, 230],
-      ],
-      header: 'Мужской туалет',
-      floor: '0',
-    },
-    {
-      bounds: [
-        [-83.5, 188.5],
-        [-112, 151],
-      ],
-      header: 'Тренажерный зал',
-      floor: '0',
-    },
-    {
-      bounds: [
-        [-170, 188.5],
-        [-142, 151],
-      ],
-      header: 'Щитовая',
-      floor: '0',
-    },
-  ]
-  const contentsPopupsFloorHeading1 = [
-    {
-      bounds: [
-        [-87.5, 321.5],
-        [-114, 282],
-      ],
-      header: 'Туалет',
-      floor: '1',
     },
   ]
   const contentsPopupsFloorHeading2 = [
@@ -302,7 +232,7 @@ export default function LeafletMap() {
       <MapInfo setZoom={setZoom} setCenter={setCenter} />
       <Search />
       <Stairs setActiveFloor={setActiveFloor} />
-      {/* {contentsPopupsFloor2.map((e) => (
+      {contentsPopupsFloor2.map((e) => (
         <Popups
           key={e}
           bounds={e.bounds}
@@ -313,7 +243,7 @@ export default function LeafletMap() {
           floor={e.floor}
           checkFloor={activeFloor}
         />
-      ))} */}
+      ))}
       {contentsPopupsFloor3.map((e) => (
         <Popups
           key={e}
@@ -326,7 +256,7 @@ export default function LeafletMap() {
           checkFloor={activeFloor}
         />
       ))}
-      {contentsPopupsFloorHeading0.map((e) => (
+      {zeroFloor.map((e: any) => (
         <PopupsHeading
           key={e}
           bounds={e.bounds}
@@ -335,7 +265,7 @@ export default function LeafletMap() {
           checkFloor={activeFloor}
         />
       ))}
-      {contentsPopupsFloorHeading1.map((e) => (
+      {firstFloor.map((e: any) => (
         <PopupsHeading
           key={e}
           bounds={e.bounds}
