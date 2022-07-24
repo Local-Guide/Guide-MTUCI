@@ -24,6 +24,11 @@ import Logo from './Logo'
 import 'leaflet/dist/leaflet.css'
 import './leafletStyles.css'
 
+const Floor2 = require('../assets/popups/Floor2.json')
+const contentFloor2 = require('../assets/popups/contentFloor2.json')
+const Floor3 = require('../assets/popups/Floor3.json')
+const contentFloor3 = require('../assets/popups/contentFloor3.json')
+
 export default function LeafletMap() {
   const [center, setCenter] = useState<{ x: number; y: number }>({
     x: 533,
@@ -43,54 +48,6 @@ export default function LeafletMap() {
   // }
 
   const [activeFloor, setActiveFloor] = useState<string>('0')
-
-  const contentsPopupsFloor2 = [
-    {
-      bounds: [
-        [-90.5, 150],
-        [-118, 136.5],
-      ],
-      header: 'Канцтовары',
-      content1: 'Время работы:',
-      content2: 'Пн-Пт с 9:00 до 17:00',
-      additionalСontent: 'Сб-Вс выходной',
-      floor: '2',
-    },
-  ]
-  const contentsPopupsFloor3 = [
-    {
-      bounds: [
-        [-141.2, 513.2],
-        [-174, 498],
-      ],
-      header: 'Кафе-бар',
-      content1: 'Время работы:',
-      content2: 'с 12:00 до 18:00',
-      floor: '3',
-    },
-    {
-      bounds: [
-        [-83, 513.3],
-        [-115.1, 498],
-      ],
-      header: 'Кафе-бистро',
-      content1: 'Время работы:',
-      content2: 'с 12:00 до 18:00',
-      floor: '3',
-    },
-    {
-      bounds: [
-        [-83, 560],
-        [-115.1, 546.5],
-      ],
-      header: 'Деканат “ИТ”',
-      content1: 'Телефоны:',
-      content2: '+7 (495) 925-10-67',
-      additionalСontent: '+7 (495) 925-10-67',
-      floor: '3',
-    },
-  ]
-
   const contentsPopupsFloorHeading0 = [
     {
       bounds: [
@@ -133,34 +90,6 @@ export default function LeafletMap() {
       ],
       header: 'Туалет',
       floor: '1',
-    },
-  ]
-  const contentsPopupsFloorHeading2 = [
-    {
-      bounds: [
-        [-90.5, 347],
-        [-117.5, 361],
-      ],
-      header: 'Туалет',
-      floor: '2',
-    },
-    {
-      bounds: [
-        [-90.5, 232],
-        [-117.5, 217.5],
-      ],
-      header: 'Туалет',
-      floor: '2',
-    },
-  ]
-  const contentsPopupsFloorHeading3 = [
-    {
-      bounds: [
-        [-83, 396.5],
-        [-115.5, 412],
-      ],
-      header: 'Ректор университета',
-      floor: '3',
     },
   ]
   const contentsPopupsFloorHeading4 = [
@@ -277,7 +206,7 @@ export default function LeafletMap() {
         </Box>
       </Flex>
       <Stairs setActiveFloor={setActiveFloor} />
-      {contentsPopupsFloor2.map((e) => (
+      {contentFloor2.map((e: any) => (
         <Popups
           key={e}
           bounds={e.bounds}
@@ -289,7 +218,7 @@ export default function LeafletMap() {
           checkFloor={activeFloor}
         />
       ))}
-      {contentsPopupsFloor3.map((e) => (
+      {contentFloor3.map((e: any) => (
         <Popups
           key={e}
           bounds={e.bounds}
@@ -319,7 +248,7 @@ export default function LeafletMap() {
           checkFloor={activeFloor}
         />
       ))}
-      {contentsPopupsFloorHeading2.map((e) => (
+      {Floor2.map((e: any) => (
         <PopupsHeading
           key={e}
           bounds={e.bounds}
@@ -328,7 +257,7 @@ export default function LeafletMap() {
           checkFloor={activeFloor}
         />
       ))}
-      {contentsPopupsFloorHeading3.map((e) => (
+      {Floor3.map((e: any) => (
         <PopupsHeading
           key={e}
           bounds={e.bounds}
