@@ -5,6 +5,7 @@ import {
   useEffect,
   useRef,
 } from 'react'
+import { Box, Flex } from '@chakra-ui/react'
 import l from 'leaflet'
 import {
   MapContainer,
@@ -267,8 +268,14 @@ export default function LeafletMap() {
       zoomControl={false}
     >
       <MapInfo setZoom={setZoom} setCenter={setCenter} />
-      <Logo />
-      <Search />
+      <Flex>
+        <Box flex={{ base: '4.3', lg: '0.4' }}>
+          <Logo />
+        </Box>
+        <Box flex={{ base: '17', lg: '25' }}>
+          <Search />
+        </Box>
+      </Flex>
       <Stairs setActiveFloor={setActiveFloor} />
       {contentsPopupsFloor2.map((e) => (
         <Popups
