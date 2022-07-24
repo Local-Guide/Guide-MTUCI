@@ -1,0 +1,14 @@
+[
+  {
+    "name": "contentsPopupsFloor2",
+    "bounds": [
+      [-90.5, 150],
+      [-118, 136.5]
+    ],
+    "header": "Канцтовары",
+    "content1": "Время работы:",
+    "content2": "Пн-Пт с 9:00 до 17:00",
+    "additionalСontent": "Сб-Вс выходной",
+    "floor": "2"
+  }
+]

@@ -17,6 +17,7 @@ import Search from './Search'
 import Stairs from './Stairs'
 import Popups from './Popups'
 import PopupsHeading from './PopupsOnlyHeading'
+// import zeroFloor from '../assets/imgs/zeroFloor.json'
 
 // Styles
 import 'leaflet/dist/leaflet.css'
@@ -24,9 +25,10 @@ import './leafletStyles.css'
 
 export default function LeafletMap() {
   const [center, setCenter] = useState<{ x: number; y: number }>({
-    x: 533,
-    y: -253,
+    x: document.documentElement.clientWidth / 2,
+    y: document.documentElement.clientHeight / 2,
   })
+  // let elem = document.elementFromPoint(x, y)
   // const [maxBound, setMaxBound] = useState<[x: number, y: number]>([
   //   -253,
   //   533
@@ -39,22 +41,54 @@ export default function LeafletMap() {
   //   1: `${process.env.PUBLIC_URL}/imgs/1/{z}/{x}-{y}.png`,
   //   3: `${process.env.PUBLIC_URL}/imgs/3/{z}/{x}-{y}.png`,
   // }
+  // const PopupsFloor = zeroFloor.contentsPopupsFloor2
+  // {
+  //   PopupsFloor.map(
+  //     (e: {
+  //       bounds: number[][]
+  //       header: string
+  //       content1: string
+  //       content2: string
+  //       additionalСontent: string
+  //       floor: number
+  //     }) => (
+  //       <Popups
+  //         bounds={e.bounds}
+  //         header={e.header}
+  //         content1={e.content1}
+  //         content2={e.content2}
+  //         additionalСontent={e.additionalСontent}
+  //         floor={e.floor}
+  //         checkFloor={activeFloor}
+  //       />
+  //     )
+  //   )
+  // }
+  // function getFileContent(fileName) {
+  //   var request = new XMLHttpRequest()
+  //   request.open('GET', fileName)
+  //   request.onloadend = function () {
+  //     console.log(request.responseText)
+  //   }
+  //   request.send()
+  // }
+  // getFileContent('zeroFloor.json')
 
   const [activeFloor, setActiveFloor] = useState<string>('0')
 
-  const contentsPopupsFloor2 = [
-    {
-      bounds: [
-        [-90.5, 150],
-        [-118, 136.5],
-      ],
-      header: 'Канцтовары',
-      content1: 'Время работы:',
-      content2: 'Пн-Пт с 9:00 до 17:00',
-      additionalСontent: 'Сб-Вс выходной',
-      floor: '2',
-    },
-  ]
+  // const contentsPopupsFloor2 = [
+  //   {
+  //     bounds: [
+  //       [-90.5, 150],
+  //       [-118, 136.5],
+  //     ],
+  //     header: 'Канцтовары',
+  //     content1: 'Время работы:',
+  //     content2: 'Пн-Пт с 9:00 до 17:00',
+  //     additionalСontent: 'Сб-Вс выходной',
+  //     floor: '2',
+  //   },
+  // ]
   const contentsPopupsFloor3 = [
     {
       bounds: [
@@ -268,7 +302,7 @@ export default function LeafletMap() {
       <MapInfo setZoom={setZoom} setCenter={setCenter} />
       <Search />
       <Stairs setActiveFloor={setActiveFloor} />
-      {contentsPopupsFloor2.map((e) => (
+      {/* {contentsPopupsFloor2.map((e) => (
         <Popups
           key={e}
           bounds={e.bounds}
@@ -279,7 +313,7 @@ export default function LeafletMap() {
           floor={e.floor}
           checkFloor={activeFloor}
         />
-      ))}
+      ))} */}
       {contentsPopupsFloor3.map((e) => (
         <Popups
           key={e}
