@@ -45,14 +45,20 @@ export default function Search() {
   return (
     <Center>
       {' '}
-      <Flex w="60vw" direction="column" position="relative" zIndex="999">
+      <Flex
+        w={{ base: '70vw', lg: '60vw' }}
+        mr="3em"
+        direction="column"
+        position="relative"
+        zIndex="999"
+      >
         <Flex>
           <InputGroup mt="10">
             <Input
               onChange={(event: any) => setValue(event.target.value)}
-              h={{ base: '2em', lg: '2.5rem' }}
+              h={{ base: '2.4em', lg: '2.5rem' }}
               bg="gray.700"
-              w="60vw"
+              w={{ base: '85vw', lg: '60vw' }}
               opacity="0.9"
               borderRadius="17px"
               color="white"
