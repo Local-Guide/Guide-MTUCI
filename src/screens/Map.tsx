@@ -24,6 +24,9 @@ import Logo from './Logo'
 import 'leaflet/dist/leaflet.css'
 import './leafletStyles.css'
 
+
+const Floor4Heading = require('../assets/popups/Floor4Heading.json')
+const Floor5Heading = require('../assets/popups/Floor5Heading.json')
 const Floor2 = require('../assets/popups/Floor2.json')
 const contentFloor2 = require('../assets/popups/contentFloor2.json')
 const Floor3 = require('../assets/popups/Floor3.json')
@@ -91,6 +94,35 @@ export default function LeafletMap() {
       header: 'Туалет',
       floor: '1',
     },
+  ]
+
+  const contentsPopupsFloorHeading2 = [
+    {
+      bounds: [
+        [-90.5, 347],
+        [-117.5, 361],
+      ],
+      header: 'Туалет',
+      floor: '2',
+    },
+    {
+      bounds: [
+        [-90.5, 232],
+        [-117.5, 217.5],
+      ],
+      header: 'Туалет',
+      floor: '2',
+    },
+  ]
+  const contentsPopupsFloorHeading3 = [
+    {
+      bounds: [
+        [-83, 396.5],
+        [-115.5, 412],
+      ],
+      header: 'Ректор университета',
+      floor: '3',
+ },
   ]
   const contentsPopupsFloorHeading4 = [
     {
@@ -266,7 +298,7 @@ export default function LeafletMap() {
           checkFloor={activeFloor}
         />
       ))}
-      {contentsPopupsFloorHeading4.map((e) => (
+      {Floor4Heading.map((e: any) => (
         <PopupsHeading
           key={e}
           bounds={e.bounds}
@@ -275,7 +307,7 @@ export default function LeafletMap() {
           checkFloor={activeFloor}
         />
       ))}
-      {contentsPopupsFloorHeading5.map((e) => (
+      {Floor5Heading.map((e: any) => (
         <PopupsHeading
           key={e}
           bounds={e.bounds}
