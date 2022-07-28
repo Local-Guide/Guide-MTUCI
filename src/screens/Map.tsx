@@ -24,13 +24,12 @@ import Logo from './Logo'
 import 'leaflet/dist/leaflet.css'
 import './leafletStyles.css'
 
-
-const Floor4Heading = require('../assets/popups/Floor4Heading.json')
-const Floor5Heading = require('../assets/popups/Floor5Heading.json')
-const Floor2 = require('../assets/popups/Floor2.json')
-const contentFloor2 = require('../assets/popups/contentFloor2.json')
-const Floor3 = require('../assets/popups/Floor3.json')
-const contentFloor3 = require('../assets/popups/contentFloor3.json')
+import Floor4Heading from '../assets/popups/Floor4Heading.json'
+import Floor5Heading from '../assets/popups/Floor5Heading.json'
+import Floor2 from '../assets/popups/Floor2.json'
+import contentFloor2 from '../assets/popups/contentFloor2.json'
+import Floor3 from '../assets/popups/Floor3.json'
+import contentFloor3 from '../assets/popups/contentFloor3.json'
 
 export default function LeafletMap() {
   const [center, setCenter] = useState<{ x: number; y: number }>({
