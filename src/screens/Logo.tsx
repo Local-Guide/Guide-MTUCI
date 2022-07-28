@@ -8,9 +8,9 @@ export default function Logo() {
       opacity="0.6"
       position="absolute"
       zIndex="9999"
-      w="7em"
-      ml="9em"
-      mt="0.8em"
+      w={{ base: '3em', lg: '7em' }}
+      ml={{ base: '1.8em', lg: '9em' }}
+      mt={{ base: '3em', lg: '0.8em' }}
     />
   )
 }
