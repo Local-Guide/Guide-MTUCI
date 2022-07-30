@@ -38,12 +38,17 @@
 .leaflet-touch .leaflet-bar a:last-child:hover {
   background: #1e222bab !important;
 }
-.leaflet-touch .leaflet-bar a {
-  line-height: normal;
+@media screen and (min-width: 992px) {
+  .leaflet-touch .leaflet-bar a {
+    line-height: normal;
+    padding-top: 1px;
+  }
 }
-.leaflet-control-zoom-in,
-.leaflet-control-zoom-out {
-  text-indent: 0px;
+@media screen and (max-width: 991px) {
+  .leaflet-touch .leaflet-bar a {
+    line-height: normal;
+    padding-top: 2px;
+  }
 }
 
 /* попапы */
