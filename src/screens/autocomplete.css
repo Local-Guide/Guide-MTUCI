@@ -1,4 +1,4 @@
-.autocomplete {
+.autocomplete, .css-oj3wle {
     background: #2d3748;
     opacity: 0.9;
     filter: drop-shadow(9px 7px 20px rgba(0, 0, 0, 0.4));
@@ -10,13 +10,15 @@
     max-height: 10.51em;
     height: auto;
     overflow: auto;
+    padding: 0;
+    border: none;
 }
 
-.autocompleteItem {
+.autocompleteItem, .css-1sox3c0 {
     padding-left: 16px;
 }
 
-.autocompleteItem:hover {
+.autocompleteItem:hover, .css-1sox3c0:hover {
     background: #252d3b;
     cursor: pointer;
 }

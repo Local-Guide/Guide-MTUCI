@@ -4,7 +4,11 @@ import {
   Center,
   InputRightElement,
   Input,
+  ListItem,
+  UnorderedList,
+  chakra,
 } from '@chakra-ui/react'
+import { Autocomplete, Option } from 'chakra-ui-simple-autocomplete'
 
 import './autocomplete.css'
 
@@ -13,7 +17,7 @@ import { useState } from 'react'
 
 import '@fontsource/inter'
 
-export default function Search() {
+export default function Search({ setActiveFloor }: any) {
   const [value, setValue] = useState<string>('')
   const [loopOpacity, setLoopOpacity] = useState<string>('0.3')
 
@@ -23,6 +27,14 @@ export default function Search() {
   }
 
   const items: Item[] = [
+    { id: 0, name: 'Тренажерный зал' },
+    { id: 1, name: 'Женский туалет (0 этаж)' },
+    { id: 2, name: 'Мужской туалет (0 этаж)' },
+    { id: 3, name: 'Щитовая' },
+    { id: 130, name: 'Туалет (1 этаж)' },
+    { id: 200, name: 'Канцтовары' },
+    { id: 201, name: 'Туалет (2 этаж)' },
+    { id: 202, name: 'Туалет (2 этаж)' },
     { id: 300, name: '300' },
     { id: 301, name: '301' },
     { id: 302, name: '302' },
@@ -35,12 +47,28 @@ export default function Search() {
     { id: 309, name: '309' },
     { id: 310, name: '310' },
     { id: 311, name: '311' },
-    { id: 1, name: 'Туалет' },
   ]
 
-  const fitlerCabinets = items.filter((item) =>
-    item.name.toLowerCase().startsWith(value.toLowerCase())
-  )
+  const handleChooseCab = (e: any) => {
+    if (e.target.value >= 0 && e.target.value < 100) {
+      setActiveFloor('0')
+    } else if (e.target.value >= 100 && e.target.value < 200) {
+      setActiveFloor('1')
+    } else if (e.target.value >= 200 && e.target.value < 300) {
+      setActiveFloor('2')
+    } else if (e.target.value >= 300 && e.target.value < 400) {
+      setActiveFloor('3')
+    } else if (e.target.value >= 400 && e.target.value < 500) {
+      setActiveFloor('4')
+    } else if (e.target.value >= 500 && e.target.value < 600) {
+      setActiveFloor('5')
+    }
+  }
+
+  const handleInputChange = (event: any) => {
+    setValue(event.target.value)
+  }
+
 
   return (
     <Center>
@@ -49,7 +77,7 @@ export default function Search() {
         <Flex>
           <InputGroup mt="10">
             <Input
-              onChange={(event: any) => setValue(event.target.value)}
+              onChange={handleInputChange}
               h={{ base: '2em', lg: '2.5rem' }}
               bg="gray.700"
               w="60vw"
@@ -78,15 +106,19 @@ export default function Search() {
             </InputRightElement>
           </InputGroup>
         </Flex>
-        <ul className="autocomplete">
+        <UnorderedList className="autocomplete" ml="0">
           {value
-            ? fitlerCabinets.map((item, index) => (
-                <li className="autocompleteItem" key={item.id}>
+            ? items.map((item) => (
+                <ListItem
+                  className="autocompleteItem"
+                  value={item.name}
+                  onClick={handleChooseCab}
+                >
                   {item.name}
-                </li>
+                </ListItem>
               ))
             : null}
-        </ul>
+        </UnorderedList>
       </Flex>
     </Center>
   )

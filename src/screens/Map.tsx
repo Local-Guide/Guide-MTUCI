@@ -268,7 +268,7 @@ export default function LeafletMap() {
     >
       <MapInfo setZoom={setZoom} setCenter={setCenter} />
       <Logo />
-      <Search />
+      <Search setActiveFloor={setActiveFloor}/>
       <Stairs setActiveFloor={setActiveFloor} />
       {contentsPopupsFloor2.map((e) => (
         <Popups
