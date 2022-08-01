@@ -4,42 +4,55 @@ import {
   Center,
   InputRightElement,
   Input,
+  ListItem,
+  UnorderedList,
 } from '@chakra-ui/react'
 
-import './autocomplete.css'
+// import './autocomplete.css'
 
 import { SearchIcon } from '@chakra-ui/icons'
 import { useState } from 'react'
 
 import '@fontsource/inter'
 
-export default function Search() {
+import floor0 from '../assets/popups/floor0.json'
+import floor1 from '../assets/popups/floor1.json'
+import floor2 from '../assets/popups/floor2.json'
+import floor3 from '../assets/popups/floor3.json'
+import floor4 from '../assets/popups/floor4.json'
+import floor5 from '../assets/popups/floor5.json'
+import contentFloor2 from '../assets/popups/contentFloor2.json'
+import contentFloor3 from '../assets/popups/contentFloor3.json'
+import contentFloor4 from '../assets/popups/contentFloor4.json'
+import contentFloor5 from '../assets/popups/contentFloor5.json'
+
+export default function Search({ setActiveFloor }: any) {
   const [value, setValue] = useState<string>('')
   const [loopOpacity, setLoopOpacity] = useState<string>('0.3')
 
-  type Item = {
-    id: number
-    name: string
-  }
-
-  const items: Item[] = [
-    { id: 300, name: '300' },
-    { id: 301, name: '301' },
-    { id: 302, name: '302' },
-    { id: 303, name: '303' },
-    { id: 304, name: '304' },
-    { id: 305, name: '305' },
-    { id: 306, name: '306' },
-    { id: 307, name: '307' },
-    { id: 308, name: '308' },
-    { id: 309, name: '309' },
-    { id: 310, name: '310' },
-    { id: 311, name: '311' },
-    { id: 1, name: 'Туалет' },
+  const allDate = [
+    ...floor0,
+    ...floor1,
+    ...floor2,
+    ...floor3,
+    ...floor4,
+    ...floor5,
+    ...contentFloor2,
+    ...contentFloor3,
+    ...contentFloor4,
+    ...contentFloor5,
   ]
 
-  const fitlerCabinets = items.filter((item) =>
-    item.name.toLowerCase().startsWith(value.toLowerCase())
+  const handleChooseCab = (e: any) => {
+    setActiveFloor(e.target.value)
+  }
+
+  // const handleInputChange = (event: any) => {
+  //   setValue(event.target.value)
+  // }
+
+  const fitlerallDate = allDate.filter((item) =>
+    item.header.toLowerCase().startsWith(value.toLowerCase())
   )
 
   return (
@@ -84,15 +97,38 @@ export default function Search() {
             </InputRightElement>
           </InputGroup>
         </Flex>
-        <ul className="autocomplete">
-          {value
-            ? fitlerCabinets.map((item, index) => (
-                <li className="autocompleteItem" key={item.id}>
-                  {item.name}
-                </li>
-              ))
-            : null}
-        </ul>
+        <UnorderedList
+          background="gray.700"
+          opacity="0.9"
+          filter="drop-shadow(9px 7px 20px rgba(0, 0, 0, 0.4))"
+          color="white"
+          fontWeight="700"
+          listStyleType="none"
+          borderRadius="17px"
+          mt="1em"
+          ml="0"
+          maxHeight={{ base: '6.51em', lg: '10.51em' }}
+          h="auto"
+          overflow="auto"
+        >
+          {value ? (
+            fitlerallDate.map((item) => (
+              <ListItem
+                key={item.header}
+                pl="16px"
+                fontSize={{ base: 'revert', lg: 'md' }}
+                py={{ base: '3px', lg: '9px' }}
+                _hover={{ background: '#252d3b', cursor: 'pointer' }}
+                value={item.floor}
+                onClick={handleChooseCab}
+              >
+                {item.header}
+              </ListItem>
+            ))
+          ) : (
+            <ListItem display="none"> </ListItem>
+          )}
+        </UnorderedList>
       </Flex>
     </Center>
   )

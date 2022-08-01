@@ -12,6 +12,7 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "chakra-ui-simple-autocomplete": "^2.2.0",
     "framer-motion": "^6",
     "leaflet": "^1.8.0",
     "react": "^18.0.0",

@@ -32,6 +32,8 @@ import floor4 from '../assets/popups/floor4.json'
 import floor5 from '../assets/popups/floor5.json'
 import contentFloor2 from '../assets/popups/contentFloor2.json'
 import contentFloor3 from '../assets/popups/contentFloor3.json'
+import contentFloor4 from '../assets/popups/contentFloor4.json'
+import contentFloor5 from '../assets/popups/contentFloor5.json'
 
 export default function LeafletMap() {
   const [center, setCenter] = useState<{ x: number; y: number }>({
@@ -78,7 +80,7 @@ export default function LeafletMap() {
           <Logo />
         </Box>
         <Box flex={{ base: '17', lg: '25' }}>
-          <Search />
+          <Search setActiveFloor={setActiveFloor} />
         </Box>
       </Flex>
       <Stairs setActiveFloor={setActiveFloor} />
@@ -151,11 +153,35 @@ export default function LeafletMap() {
           checkFloor={activeFloor}
         />
       ))}
+      {contentFloor4.map((e: any) => (
+        <Popups
+          key={e}
+          bounds={e.bounds}
+          header={e.header}
+          content1={e.content1}
+          content2={e.content2}
+          additionalСontent={e.additionalСontent}
+          floor={e.floor}
+          checkFloor={activeFloor}
+        />
+      ))}
       {floor5.map((e: any) => (
         <PopupsHeading
           key={e}
           bounds={e.bounds}
           header={e.header}
+          floor={e.floor}
+          checkFloor={activeFloor}
+        />
+      ))}
+      {contentFloor5.map((e: any) => (
+        <Popups
+          key={e}
+          bounds={e.bounds}
+          header={e.header}
+          content1={e.content1}
+          content2={e.content2}
+          additionalСontent={e.additionalСontent}
           floor={e.floor}
           checkFloor={activeFloor}
         />
