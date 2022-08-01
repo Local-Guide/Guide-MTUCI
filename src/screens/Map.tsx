@@ -30,26 +30,35 @@ export default function LeafletMap() {
     x: 533,
     y: -253,
   })
-  // export default function LeafletMap() {
-  //   const [center, setCenter] = useState<{ x: number; y: number }>({
-  //     x: document.documentElement.clientWidth / 2,
-  //     y: document.documentElement.clientHeight / 2,
-  //   })
-  // let elem = document.elementFromPoint(x, y)
-  // const [maxBound, setMaxBound] = useState<[x: number, y: number]>([
-  //   -253,
-  //   533
-  // ])
-  // const bounds: [[number, number]] = [[center.x, center.y]]
 
   const [zoom, setZoom] = useState<number>(1)
 
-  // const urlFloors = {
-  //   1: `${process.env.PUBLIC_URL}/imgs/1/{z}/{x}-{y}.png`,
-  //   3: `${process.env.PUBLIC_URL}/imgs/3/{z}/{x}-{y}.png`,
-  // }
-
   const [activeFloor, setActiveFloor] = useState<string>('0')
+
+  useEffect(() => {
+    switch (activeFloor) {
+      case '0':
+        setCenter({ x: 533, y: -253 })
+        setZoom(1)
+        break
+      case '1':
+        setCenter({ x: 385, y: -130 })
+        setZoom(1)
+        break
+      case '3':
+        setCenter({ x: 512, y: -130 })
+        setZoom(1)
+        break
+      case '4':
+        setCenter({ x: 385, y: -130 })
+        setZoom(1)
+        break
+      case '5':
+        setCenter({ x: 260, y: -130 })
+        setZoom(1)
+        break
+    }
+  })
 
   const contentsPopupsFloor2 = [
     {
@@ -223,7 +232,7 @@ export default function LeafletMap() {
     <MapContainer
       // maxBounds={maxBound}
       crs={l.CRS.Simple}
-      center={[center.y, center.x]}
+      center={[center.y!, center.x!]}
       zoom={zoom}
       className="map"
       attributionControl={false}
