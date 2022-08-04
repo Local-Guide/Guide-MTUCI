@@ -55,6 +55,34 @@ export default function LeafletMap() {
 
   const [activeFloor, setActiveFloor] = useState<string>('0')
 
+  // useEffect(() => {
+  //   switch (activeFloor) {
+  //     case '0':
+  //       setCenter({ x: 533, y: -253 })
+  //       setZoom(1)
+  //       break
+  //     case '1':
+  //       setCenter({ x: 385, y: -130 })
+  //       setZoom(1)
+  //       break
+  //     case '2':
+  //       setCenter({ x: 533, y: -253 })
+  //       setZoom(1)
+  //       break
+  //     case '3':
+  //       setCenter({ x: 512, y: -130 })
+  //       setZoom(1)
+  //       break
+  //     case '4':
+  //       setCenter({ x: 385, y: -130 })
+  //       setZoom(1)
+  //       break
+  //     case '5':
+  //       setCenter({ x: 260, y: -130 })
+  //       setZoom(1)
+  //       break
+  //   }
+  // })
   const ref = useRef<any>(null)
   useEffect(() => {
     if (ref.current) {
