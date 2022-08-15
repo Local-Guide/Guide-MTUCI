@@ -116,7 +116,7 @@ export default function LeafletMap() {
         <PopupsHeading
           key={e}
           bounds={e.bounds}
-          header={e.header}
+          header={e.label}
           floor={e.floor}
           checkFloor={activeFloor}
         />
@@ -125,7 +125,7 @@ export default function LeafletMap() {
         <PopupsHeading
           key={e}
           bounds={e.bounds}
-          header={e.header}
+          header={e.label}
           floor={e.floor}
           checkFloor={activeFloor}
         />
@@ -134,7 +134,7 @@ export default function LeafletMap() {
         <Popups
           key={e}
           bounds={e.bounds}
-          header={e.header}
+          header={e.label}
           content1={e.content1}
           content2={e.content2}
           additionalСontent={e.additionalСontent}
@@ -146,7 +146,7 @@ export default function LeafletMap() {
         <Popups
           key={e}
           bounds={e.bounds}
-          header={e.header}
+          header={e.label}
           content1={e.content1}
           content2={e.content2}
           additionalСontent={e.additionalСontent}
@@ -158,7 +158,7 @@ export default function LeafletMap() {
         <PopupsHeading
           key={e}
           bounds={e.bounds}
-          header={e.header}
+          header={e.label}
           floor={e.floor}
           checkFloor={activeFloor}
         />
@@ -167,7 +167,7 @@ export default function LeafletMap() {
         <PopupsHeading
           key={e}
           bounds={e.bounds}
-          header={e.header}
+          header={e.label}
           floor={e.floor}
           checkFloor={activeFloor}
         />
@@ -176,7 +176,7 @@ export default function LeafletMap() {
         <PopupsHeading
           key={e}
           bounds={e.bounds}
-          header={e.header}
+          header={e.label}
           floor={e.floor}
           checkFloor={activeFloor}
         />
@@ -185,7 +185,7 @@ export default function LeafletMap() {
         <Popups
           key={e}
           bounds={e.bounds}
-          header={e.header}
+          header={e.label}
           content1={e.content1}
           content2={e.content2}
           additionalСontent={e.additionalСontent}
@@ -197,7 +197,7 @@ export default function LeafletMap() {
         <PopupsHeading
           key={e}
           bounds={e.bounds}
-          header={e.header}
+          header={e.label}
           floor={e.floor}
           checkFloor={activeFloor}
         />
@@ -206,7 +206,7 @@ export default function LeafletMap() {
         <Popups
           key={e}
           bounds={e.bounds}
-          header={e.header}
+          header={e.label}
           content1={e.content1}
           content2={e.content2}
           additionalСontent={e.additionalСontent}
