@@ -12,7 +12,7 @@ function Stairs({ setActiveFloor }: any) {
       position="absolute"
       right="16px"
       top="25%"
-      zIndex="999"
+      zIndex="overlay"
     >
       <Flex
         flexDirection="column"
