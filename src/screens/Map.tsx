@@ -35,7 +35,15 @@ import contentFloor3 from '../assets/popups/contentFloor3.json'
 import contentFloor4 from '../assets/popups/contentFloor4.json'
 import contentFloor5 from '../assets/popups/contentFloor5.json'
 
-export default function LeafletMap() {
+interface LeafletMapProps {
+  activeFloor: string
+  setActiveFloor: Dispatch<SetStateAction<string>>
+}
+
+export default function LeafletMap({
+  activeFloor,
+  setActiveFloor,
+}: LeafletMapProps) {
   const [center, setCenter] = useState<{ x: number; y: number }>({
     x: 533,
     y: -253,
@@ -52,8 +60,6 @@ export default function LeafletMap() {
   //   1: `${process.env.PUBLIC_URL}/imgs/1/{z}/{x}-{y}.png`,
   //   3: `${process.env.PUBLIC_URL}/imgs/3/{z}/{x}-{y}.png`,
   // }
-
-  const [activeFloor, setActiveFloor] = useState<string>('0')
 
   // useEffect(() => {
   //   switch (activeFloor) {
@@ -103,14 +109,6 @@ export default function LeafletMap() {
       zoomControl={false}
     >
       <MapInfo setZoom={setZoom} setCenter={setCenter} />
-      <Flex>
-        <Box flex={{ base: '4.3', lg: '0.4' }}>
-          <Logo />
-        </Box>
-        <Box flex={{ base: '17', lg: '25' }}>
-          <Search setActiveFloor={setActiveFloor} />
-        </Box>
-      </Flex>
       <Stairs setActiveFloor={setActiveFloor} />
       {floor0.map((e) => (
         <PopupsHeading
