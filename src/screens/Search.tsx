@@ -49,7 +49,7 @@ const allDate = [
 ]
 
 interface AwesomeSelectProps {
-  onChange: (newValue: typeof allDate[0]) => void
+  onChange: (newValue: typeof allDate[0] | null) => void
 }
 
 function AwesomeSelect({ onChange }: AwesomeSelectProps) {
@@ -133,9 +133,12 @@ export default function Search({ setActiveFloor }: any) {
     floor: string
   }>()
   const handleUpdateSelect: AwesomeSelectProps['onChange'] = (newValue) => {
-    console.log(newValue)
-    setSelectedValue({ text: newValue.label, floor: newValue.floor })
-    setActiveFloor(newValue.floor)
+    if (newValue) {
+      setSelectedValue({ text: newValue.label, floor: newValue.floor })
+      setActiveFloor(newValue.floor)
+    } else {
+      setSelectedValue(undefined)
+    }
   }
 
   return (
