@@ -12,7 +12,11 @@ import {
   InputLeftElement,
 } from '@chakra-ui/react'
 
-import { Select } from 'chakra-react-select'
+import {
+  Select,
+  type ChakraStylesConfig,
+  type GroupBase,
+} from 'chakra-react-select'
 // import './autocomplete.css'
 
 import { SearchIcon } from '@chakra-ui/icons'
@@ -53,30 +57,45 @@ function AwesomeSelect({ onChange }: AwesomeSelectProps) {
     DropdownIndicator: () => null,
     IndicatorSeparator: () => null,
   }
+  const chakraStyles: ChakraStylesConfig = {
+    menuList: (provided) => ({
+      ...provided,
+      p: 0,
+      borderColor: 'gray.700',
+      bg: 'gray.700',
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      bg: 'gray.700',
+      color: 'gray.300',
+      _active: { bg: 'white' },
+      _hover: { bg: 'gray.600' },
+    }),
+    container: (provided) => ({
+      ...provided,
+      bg: 'gray.700',
+      borderRadius: 'full',
+      w: { base: '70vw', lg: '60vw' },
+    }),
+    control: (provided) => ({
+      ...provided,
+      border: 'none',
+      color: 'white',
+    }),
+  }
   return (
-    <Box
-      h={{ base: '2.4em', lg: '2.5rem' }}
-      bg="gray.700"
-      w={{ base: '85vw', lg: '60vw' }}
-      opacity="0.9"
-      borderRadius="17px"
-      color="white"
-      fontWeight="700"
-      filter="drop-shadow(9px 7px 20px rgba(0, 0, 0, 0.4))"
-      border="none"
-      fontSize={{ base: 'revert', lg: 'md' }}
-    >
-      <Select
-        isClearable
-        options={allDate}
-        components={{
-          ...disableRightButton,
-        }}
-        placeholder="Поиск..."
-        noOptionsMessage={() => 'Ничего не нашлось 😔'}
-        onChange={onChange}
-      />
-    </Box>
+    <Select
+      chakraStyles={chakraStyles}
+      isClearable
+      options={allDate}
+      components={{
+        ...disableRightButton,
+      }}
+      placeholder="Поиск..."
+      noOptionsMessage={() => 'Ничего не нашлось 😔'}
+      // @ts-ignore
+      onChange={onChange}
+    />
   )
 }
 
@@ -120,25 +139,16 @@ export default function Search({ setActiveFloor }: any) {
   }
 
   return (
-    <Center>
-      <Stack
-        mt="10"
-        w={{ base: '70vw', lg: '60vw' }}
-        mr="3em"
-        direction="column"
-        position="relative"
-        zIndex="999"
-      >
-        <AwesomeSelect onChange={handleUpdateSelect} />
-        {selectedValue && (
-          <Heading>
-            Вы выбрали:{' '}
-            <Heading as="b">
-              {selectedValue.text} {selectedValue.floor}
-            </Heading>
+    <Center w="100%">
+      <AwesomeSelect onChange={handleUpdateSelect} />
+      {selectedValue && (
+        <Heading>
+          Вы выбрали:{' '}
+          <Heading as="b">
+            {selectedValue.text} {selectedValue.floor}
           </Heading>
-        )}
-      </Stack>{' '}
+        </Heading>
+      )}
     </Center>
   )
 }
