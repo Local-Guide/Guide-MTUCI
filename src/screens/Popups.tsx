@@ -12,15 +12,16 @@ export default function Popups({
 }: any) {
   const popupHead = {
     fontWeight: '700',
-    fontSize: '14px',
-    letterSpacing: '2px',
+    fontSize: '15px',
+    // letterSpacing: '2px',
   }
   const popupText = {
-    fontSize: '10px',
+    fontSize: '11px',
     marginTop: '3px',
   }
 
-  if (floor === checkFloor) {
+  if (floor != checkFloor) return null
+  if (content2 || additionalСontent) {
     return (
       <Rectangle bounds={bounds}>
         <Popup minWidth={160}>
@@ -38,5 +39,14 @@ export default function Popups({
       </Rectangle>
     )
   }
-  return null
+  return (
+    <Rectangle bounds={bounds}>
+      <Popup minWidth={160}>
+        <Box textAlign="center" style={popupHead}>
+          {header}
+        </Box>
+        <Box style={popupText}>{content1}</Box>
+      </Popup>
+    </Rectangle>
+  )
 }

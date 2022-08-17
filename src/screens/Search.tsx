@@ -1,23 +1,10 @@
-import {
-  InputGroup,
-  Flex,
-  Center,
-  InputRightElement,
-  Input,
-  ListItem,
-  UnorderedList,
-  Box,
-  Stack,
-  Heading,
-  InputLeftElement,
-} from '@chakra-ui/react'
+import { Center, Icon } from '@chakra-ui/react'
 
 import {
+  chakraComponents,
   Select,
   type ChakraStylesConfig,
-  type GroupBase,
 } from 'chakra-react-select'
-// import './autocomplete.css'
 
 import { SearchIcon } from '@chakra-ui/icons'
 import { useState } from 'react'
@@ -35,26 +22,27 @@ import contentFloor3 from '../assets/popups/contentFloor3.json'
 import contentFloor4 from '../assets/popups/contentFloor4.json'
 import contentFloor5 from '../assets/popups/contentFloor5.json'
 
-const allDate = [
-  ...floor0,
-  ...floor1,
-  ...floor2,
-  ...floor3,
-  ...floor4,
-  ...floor5,
-  ...contentFloor2,
-  ...contentFloor3,
-  ...contentFloor4,
-  ...contentFloor5,
+const groupedOptions = [
+  { label: 'Этаж 0', options: floor0 },
+  { label: 'Этаж 1', options: floor1 },
+  { label: 'Этаж 2', options: [...floor2, ...contentFloor2] },
+  { label: 'Этаж 3', options: [...floor3, ...contentFloor3] },
+  { label: 'Этаж 4', options: [...floor4, ...contentFloor4] },
+  { label: 'Этаж 5', options: [...floor5, ...contentFloor5] },
 ]
 
 interface AwesomeSelectProps {
-  onChange: (newValue: typeof allDate[0] | null) => void
+  onChange: (newValue: typeof groupedOptions[0] | null) => void
 }
 
 function AwesomeSelect({ onChange }: AwesomeSelectProps) {
   const disableRightButton = {
-    DropdownIndicator: () => null,
+    /* eslint-disable */
+    DropdownIndicator: (props: any) => (
+      <chakraComponents.DropdownIndicator {...props}>
+        <Icon as={SearchIcon} h={4} />
+      </chakraComponents.DropdownIndicator>
+    ) /* eslint-enable */,
     IndicatorSeparator: () => null,
   }
   const chakraStyles: ChakraStylesConfig = {
@@ -62,32 +50,67 @@ function AwesomeSelect({ onChange }: AwesomeSelectProps) {
       ...provided,
       p: 0,
       borderColor: 'gray.700',
-      bg: 'gray.700',
+      bg: '#2d3748ab',
+    }),
+    groupHeading: (provided) => ({
+      ...provided,
+      bg: '#232c3bab',
+      color: '#bfc2c7',
+      fontSize: '18',
     }),
     option: (provided, state) => ({
       ...provided,
-      bg: 'gray.700',
+      bg: '#2d3748ab',
       color: 'gray.300',
       _active: { bg: 'white' },
       _hover: { bg: 'gray.600' },
     }),
     container: (provided) => ({
       ...provided,
-      bg: 'gray.700',
-      borderRadius: 'full',
+      mt: { base: '0px', lg: '10px' },
+      bg: '#2d3748ab',
+      borderRadius: '17px',
       w: { base: '70vw', lg: '60vw' },
+      boxShadow: '0px 0px 35px 9px #2d3748ab',
     }),
     control: (provided) => ({
       ...provided,
+      borderRadius: '17px',
       border: 'none',
-      color: 'white',
+      fontFamily: 'Inter',
+      color: '#bfc2c7',
+    }),
+    // dropdownIndicator: (provided) => ({
+    //   ...provided,
+    //   bg: 'none',
+    // }),
+    dropdownIndicator: (provided, { selectProps: { menuIsOpen } }) => ({
+      ...provided,
+      opacity: '0.5',
+      bg: 'none',
+      w: '30px',
+      mr: '10px',
+      borderRadius: '10px',
+      _hover: { h: '84%', bg: '#1e222b30', opacity: '1' },
+      '> svg': {
+        transitionDuration: 'normal',
+        transform: `rotate(${menuIsOpen ? -180 : 0}deg)`,
+      },
+    }),
+    clearIndicator: (provided) => ({
+      ...provided,
+      opacity: '0.5',
+      bg: 'none',
+      w: '30px',
+      borderRadius: '10px',
+      _hover: { bg: '#1e222b30', opacity: '1' },
     }),
   }
   return (
     <Select
       chakraStyles={chakraStyles}
       isClearable
-      options={allDate}
+      options={groupedOptions}
       components={{
         ...disableRightButton,
       }}
@@ -100,33 +123,7 @@ function AwesomeSelect({ onChange }: AwesomeSelectProps) {
 }
 
 export default function Search({ setActiveFloor }: any) {
-  const [value, setValue] = useState<string>('')
-  const [loopOpacity, setLoopOpacity] = useState<string>('0.3')
-
-  // const allDate = [
-  //   ...floor0,
-  //   ...floor1,
-  //   ...floor2,
-  //   ...floor3,
-  //   ...floor4,
-  //   ...floor5,
-  //   ...contentFloor2,
-  //   ...contentFloor3,
-  //   ...contentFloor4,
-  //   ...contentFloor5,
-  // ]
-
-  // const handleChooseCab = (e: any) => {
-  //   setActiveFloor(e.target.value)
-  // }
-
-  // const handleInputChange = (event: any) => {
-  //   setValue(event.target.value)
-  // }
-
-  // const fitlerallDate = allDate.filter((item) =>
-  //   item.label.toLowerCase().startsWith(value.toLowerCase())
-  // )
+  // const [value, setValue] = useState<string>('')
 
   const [selectedValue, setSelectedValue] = useState<{
     text: string
@@ -134,8 +131,16 @@ export default function Search({ setActiveFloor }: any) {
   }>()
   const handleUpdateSelect: AwesomeSelectProps['onChange'] = (newValue) => {
     if (newValue) {
-      setSelectedValue({ text: newValue.label, floor: newValue.floor })
-      setActiveFloor(newValue.floor)
+      // console.log(newValue)
+      // console.log(newValue.options ? newValue.options : 'не загрузилось :(')
+      // console.log(newValue.label)
+      // console.log((newValue as any).floor)
+
+      setSelectedValue({
+        text: newValue.label,
+        floor: (newValue as any).floor,
+      })
+      setActiveFloor((newValue as any).floor)
     } else {
       setSelectedValue(undefined)
     }
@@ -144,14 +149,6 @@ export default function Search({ setActiveFloor }: any) {
   return (
     <Center w="100%">
       <AwesomeSelect onChange={handleUpdateSelect} />
-      {selectedValue && (
-        <Heading>
-          Вы выбрали:{' '}
-          <Heading as="b">
-            {selectedValue.text} {selectedValue.floor}
-          </Heading>
-        </Heading>
-      )}
     </Center>
   )
 }
