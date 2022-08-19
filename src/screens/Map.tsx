@@ -35,6 +35,21 @@ import contentFloor3 from '../assets/popups/contentFloor3.json'
 import contentFloor4 from '../assets/popups/contentFloor4.json'
 import contentFloor5 from '../assets/popups/contentFloor5.json'
 
+const allFloor = [
+  ...floor0,
+  ...floor1,
+  ...floor2,
+  ...floor3,
+  ...floor4,
+  ...floor5,
+]
+const allContentFloor = [
+  ...contentFloor2,
+  ...contentFloor3,
+  ...contentFloor4,
+  ...contentFloor5,
+]
+
 interface LeafletMapProps {
   activeFloor: string
   setActiveFloor: Dispatch<SetStateAction<string>>
@@ -110,7 +125,7 @@ export default function LeafletMap({
     >
       <MapInfo setZoom={setZoom} setCenter={setCenter} />
       <Stairs setActiveFloor={setActiveFloor} />
-      {floor0.map((e) => (
+      {allFloor.map((e) => (
         <PopupsHeading
           key={e}
           bounds={e.bounds}
@@ -119,88 +134,7 @@ export default function LeafletMap({
           checkFloor={activeFloor}
         />
       ))}
-      {floor1.map((e) => (
-        <PopupsHeading
-          key={e}
-          bounds={e.bounds}
-          header={e.label}
-          floor={e.floor}
-          checkFloor={activeFloor}
-        />
-      ))}
-      {contentFloor2.map((e: any) => (
-        <Popups
-          key={e}
-          bounds={e.bounds}
-          header={e.label}
-          content1={e.content1}
-          content2={e.content2}
-          additionalСontent={e.additionalСontent}
-          floor={e.floor}
-          checkFloor={activeFloor}
-        />
-      ))}
-      {contentFloor3.map((e: any) => (
-        <Popups
-          key={e}
-          bounds={e.bounds}
-          header={e.label}
-          content1={e.content1}
-          content2={e.content2}
-          additionalСontent={e.additionalСontent}
-          floor={e.floor}
-          checkFloor={activeFloor}
-        />
-      ))}
-      {floor2.map((e: any) => (
-        <PopupsHeading
-          key={e}
-          bounds={e.bounds}
-          header={e.label}
-          floor={e.floor}
-          checkFloor={activeFloor}
-        />
-      ))}
-      {floor3.map((e: any) => (
-        <PopupsHeading
-          key={e}
-          bounds={e.bounds}
-          header={e.label}
-          floor={e.floor}
-          checkFloor={activeFloor}
-        />
-      ))}
-      {floor4.map((e: any) => (
-        <PopupsHeading
-          key={e}
-          bounds={e.bounds}
-          header={e.label}
-          floor={e.floor}
-          checkFloor={activeFloor}
-        />
-      ))}
-      {contentFloor4.map((e: any) => (
-        <Popups
-          key={e}
-          bounds={e.bounds}
-          header={e.label}
-          content1={e.content1}
-          content2={e.content2}
-          additionalСontent={e.additionalСontent}
-          floor={e.floor}
-          checkFloor={activeFloor}
-        />
-      ))}
-      {floor5.map((e: any) => (
-        <PopupsHeading
-          key={e}
-          bounds={e.bounds}
-          header={e.label}
-          floor={e.floor}
-          checkFloor={activeFloor}
-        />
-      ))}
-      {contentFloor5.map((e: any) => (
+      {allContentFloor.map((e: any) => (
         <Popups
           key={e}
           bounds={e.bounds}

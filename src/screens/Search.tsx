@@ -127,18 +127,11 @@ export default function Search({ setActiveFloor }: any) {
 
   const [selectedValue, setSelectedValue] = useState<{
     text: string
-    floor: string
   }>()
   const handleUpdateSelect: AwesomeSelectProps['onChange'] = (newValue) => {
     if (newValue) {
-      // console.log(newValue)
-      // console.log(newValue.options ? newValue.options : 'не загрузилось :(')
-      // console.log(newValue.label)
-      // console.log((newValue as any).floor)
-
       setSelectedValue({
         text: newValue.label,
-        floor: (newValue as any).floor,
       })
       setActiveFloor((newValue as any).floor)
     } else {
