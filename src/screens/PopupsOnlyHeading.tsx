@@ -8,9 +8,8 @@ export default function PopupsHeading({
   checkFloor,
 }: any) {
   const popupHead = {
-    fontWeight: '700',
-    fontSize: '14px',
-    letterSpacing: '2px',
+    fontWeight: '500',
+    fontSize: '15px',
     marginLeft: '10px',
     marginRight: '10px',
   }

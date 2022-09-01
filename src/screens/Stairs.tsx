@@ -12,7 +12,7 @@ function Stairs({ setActiveFloor }: any) {
       position="absolute"
       right="16px"
       top="25%"
-      zIndex="999"
+      zIndex="overlay"
     >
       <Flex
         flexDirection="column"
@@ -58,7 +58,9 @@ function Stairs({ setActiveFloor }: any) {
           _active={{
             bg: 'rgba(129, 129, 129, 0.2)',
           }}
-          onClick={() => setActiveFloor('1')}
+          onClick={() => {
+            setActiveFloor('1')
+          }}
         >
           1
         </Button>
