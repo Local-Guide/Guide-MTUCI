@@ -107,9 +107,7 @@ export default function LeafletMap({
   const ref = useRef<any>(null)
   useEffect(() => {
     if (ref.current) {
-      ref.current.setUrl(
-        `${process.env.PUBLIC_URL}/imgs/${activeFloor}/{z}/{x}-{y}.png`
-      )
+      ref.current.setUrl(`/imgs/${activeFloor}/{z}/{x}-{y}.png`)
     }
   }, [activeFloor])
 
@@ -149,7 +147,7 @@ export default function LeafletMap({
       <TileLayer
         // url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
         ref={ref}
-        url={`${process.env.PUBLIC_URL}/imgs/${activeFloor}/{z}/{x}-{y}.png`}
+        url={`/imgs/${activeFloor}/{z}/{x}-{y}.png`}
         // url="https://map.aviapark.com/tiles/1@2x/{z}/{x}/{y}.png"
         maxZoom={zoom + 1}
         minZoom={zoom - 1}

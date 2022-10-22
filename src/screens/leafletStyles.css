@@ -19,16 +19,39 @@
   border: none !important;
 }
 .leaflet-control-zoom-in {
+  height: fit-content !important;
   background: #2d3748ab !important;
   border: 2px solid #364152ab !important;
   color: #bfc2c7 !important;
   margin-bottom: 5px;
 }
+.leaflet-control-zoom-in span {
+  display: none;
+}
+.leaflet-control-zoom-in:after {
+  content: '\FF0B';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .leaflet-control-zoom-out {
+  height: fit-content !important;
   background: #4a5568ab !important;
   border: 2px solid #2d3748ab !important;
   color: #bfc2c7 !important;
 }
+
+.leaflet-control-zoom-out span {
+  display: none;
+}
+.leaflet-control-zoom-out:after {
+  content: '\FF0D';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .leaflet-touch .leaflet-bar a:first-child,
 .leaflet-touch .leaflet-bar a:last-child {
   border-radius: 5px;
