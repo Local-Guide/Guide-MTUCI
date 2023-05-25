@@ -1,6 +1,9 @@
 import { Box, Button, Flex, Text } from '@chakra-ui/react'
+import useActiveFloor from './stores/stairs'
 
-function Stairs({ setActiveFloor }: any) {
+function Stairs() {
+  const stairs = [0, 1, 2, 3, 4, 5]
+  const setActiveFloor = useActiveFloor((state) => state.setActiveFloor)
   return (
     <Box
       bg="gray.700"
@@ -22,124 +25,29 @@ function Stairs({ setActiveFloor }: any) {
         fontSize="lg"
       >
         <Text color="rgba(255,255,255,0.7)">Этаж</Text>
-        <Button
-          color="rgba(255,255,255,0.7)"
-          ml="auto"
-          mr="auto"
-          h="40px"
-          w="40px"
-          bg="none"
-          border="2px solid #4A5568"
-          borderRadius="2px"
-          _hover={{
-            bg: 'rgba(229, 229, 229, 0.2)',
-          }}
-          _active={{
-            bg: 'rgba(129, 129, 129, 0.2)',
-          }}
-          onClick={() => {
-            setActiveFloor('0')
-          }}
-        >
-          0
-        </Button>
-        <Button
-          color="rgba(255,255,255,0.7)"
-          ml="auto"
-          mr="auto"
-          h="40px"
-          w="40px"
-          bg="none"
-          border="2px solid #4A5568"
-          borderRadius="2px"
-          _hover={{
-            bg: 'rgba(229, 229, 229, 0.2)',
-          }}
-          _active={{
-            bg: 'rgba(129, 129, 129, 0.2)',
-          }}
-          onClick={() => {
-            setActiveFloor('1')
-          }}
-        >
-          1
-        </Button>
-        <Button
-          color="rgba(255,255,255,0.7)"
-          ml="auto"
-          mr="auto"
-          h="40px"
-          w="40px"
-          bg="none"
-          border="2px solid #4A5568"
-          borderRadius="2px"
-          _hover={{
-            bg: 'rgba(229, 229, 229, 0.2)',
-          }}
-          _active={{
-            bg: 'rgba(129, 129, 129, 0.2)',
-          }}
-          onClick={() => setActiveFloor('2')}
-        >
-          2
-        </Button>
-        <Button
-          color="rgba(255,255,255,0.7)"
-          ml="auto"
-          mr="auto"
-          h="40px"
-          w="40px"
-          bg="none"
-          border="2px solid #4A5568"
-          borderRadius="2px"
-          _hover={{
-            bg: 'rgba(229, 229, 229, 0.2)',
-          }}
-          _active={{
-            bg: 'rgba(129, 129, 129, 0.2)',
-          }}
-          onClick={() => setActiveFloor('3')}
-        >
-          3
-        </Button>
-        <Button
-          color="rgba(255,255,255,0.7)"
-          ml="auto"
-          mr="auto"
-          h="40px"
-          w="40px"
-          bg="none"
-          border="2px solid #4A5568"
-          borderRadius="2px"
-          _hover={{
-            bg: 'rgba(229, 229, 229, 0.2)',
-          }}
-          _active={{
-            bg: 'rgba(129, 129, 129, 0.2)',
-          }}
-          onClick={() => setActiveFloor('4')}
-        >
-          4
-        </Button>
-        <Button
-          color="rgba(255,255,255,0.7)"
-          ml="auto"
-          mr="auto"
-          h="40px"
-          w="40px"
-          bg="none"
-          border="2px solid #4A5568"
-          borderRadius="2px"
-          _hover={{
-            bg: 'rgba(229, 229, 229, 0.2)',
-          }}
-          _active={{
-            bg: 'rgba(129, 129, 129, 0.2)',
-          }}
-          onClick={() => setActiveFloor('5')}
-        >
-          5
-        </Button>
+        {stairs.map((item) => (
+          <Button
+            key={item + 1}
+            color="rgba(255,255,255,0.7)"
+            m="auto"
+            h="40px"
+            w="40px"
+            bg="none"
+            border="2px solid #4A5568"
+            borderRadius="2px"
+            _hover={{
+              bg: 'rgba(229, 229, 229, 0.2)',
+            }}
+            _active={{
+              bg: 'rgba(129, 129, 129, 0.2)',
+            }}
+            onClick={() => {
+              setActiveFloor(item)
+            }}
+          >
+            {item}
+          </Button>
+        ))}
       </Flex>
     </Box>
   )

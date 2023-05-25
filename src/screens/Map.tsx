@@ -5,7 +5,6 @@ import {
   useEffect,
   useRef,
 } from 'react'
-import { Box, Flex } from '@chakra-ui/react'
 import l from 'leaflet'
 import {
   MapContainer,
@@ -14,11 +13,9 @@ import {
   ZoomControl,
 } from 'react-leaflet'
 
-import Search from './Search'
 import Stairs from './Stairs'
 import Popups from './Popups'
 import PopupsHeading from './PopupsOnlyHeading'
-import Logo from './Logo'
 
 // Styles
 import 'leaflet/dist/leaflet.css'
@@ -34,6 +31,7 @@ import contentFloor2 from '../assets/popups/contentFloor2.json'
 import contentFloor3 from '../assets/popups/contentFloor3.json'
 import contentFloor4 from '../assets/popups/contentFloor4.json'
 import contentFloor5 from '../assets/popups/contentFloor5.json'
+import useActiveFloor from './stores/stairs'
 
 const allFloor = [
   ...floor0,
@@ -50,15 +48,8 @@ const allContentFloor = [
   ...contentFloor5,
 ]
 
-interface LeafletMapProps {
-  activeFloor: string
-  setActiveFloor: Dispatch<SetStateAction<string>>
-}
-
-export default function LeafletMap({
-  activeFloor,
-  setActiveFloor,
-}: LeafletMapProps) {
+export default function LeafletMap() {
+  const activeFloor = useActiveFloor((state) => state.activeFloor)
   const [center, setCenter] = useState<{ x: number; y: number }>({
     x: 533,
     y: -253,
@@ -124,7 +115,7 @@ export default function LeafletMap({
       zoomControl={false}
     >
       <MapInfo setZoom={setZoom} setCenter={setCenter} />
-      <Stairs setActiveFloor={setActiveFloor} />
+      <Stairs />
       {allFloor.map((e) => (
         <PopupsHeading
           key={e}

@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { ChakraProvider, Portal, Stack, Flex, Spacer } from '@chakra-ui/react'
 
 // Screens
@@ -7,8 +6,6 @@ import Search from './Search'
 import Logo from './Logo'
 
 export default function Root() {
-  const [activeFloor, setActiveFloor] = useState<string>('0')
-
   return (
     <ChakraProvider>
       <Portal>
@@ -26,12 +23,12 @@ export default function Root() {
             <Logo />
           </Flex>
           <Flex flex="1" align="center" justify="center">
-            <Search setActiveFloor={setActiveFloor} />
+            <Search />
           </Flex>
           <Spacer display={{ base: 'none', lg: 'block' }} />
         </Stack>
       </Portal>
-      <Map activeFloor={activeFloor} setActiveFloor={setActiveFloor} />
+      <Map />
     </ChakraProvider>
   )
 }
