@@ -1,7 +1,9 @@
 import { Box, Button, Flex, Text } from '@chakra-ui/react'
+import useActiveFloor from './stores/stairs'
 
-function Stairs({ setActiveFloor }: any) {
+function Stairs() {
   const stairs = [0, 1, 2, 3, 4, 5]
+  const setActiveFloor = useActiveFloor((state) => state.setActiveFloor)
   return (
     <Box
       bg="gray.700"
@@ -25,9 +27,9 @@ function Stairs({ setActiveFloor }: any) {
         <Text color="rgba(255,255,255,0.7)">Этаж</Text>
         {stairs.map((item) => (
           <Button
+            key={item + 1}
             color="rgba(255,255,255,0.7)"
-            ml="auto"
-            mr="auto"
+            m="auto"
             h="40px"
             w="40px"
             bg="none"
@@ -40,7 +42,7 @@ function Stairs({ setActiveFloor }: any) {
               bg: 'rgba(129, 129, 129, 0.2)',
             }}
             onClick={() => {
-              setActiveFloor(`${item}`)
+              setActiveFloor(item)
             }}
           >
             {item}
