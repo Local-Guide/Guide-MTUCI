@@ -3,13 +3,13 @@ import { ChakraProvider, Portal, Stack, Flex, Spacer } from '@chakra-ui/react'
 // Screens
 import Map from './Map'
 import Search from './Search'
-import Logo from './Logo'
 
 export default function Root() {
   return (
     <ChakraProvider>
       <Portal>
         <Stack
+          align="center"
           spacing={{ base: '4', lg: '0' }}
           direction={{ base: 'column', lg: 'row' }}
           pos="absolute"
@@ -19,13 +19,7 @@ export default function Root() {
           h={{ base: 'auto', lg: '24' }}
           zIndex="overlay"
         >
-          <Flex flex="1" align="center" justify="center">
-            <Logo />
-          </Flex>
-          <Flex flex="1" align="center" justify="center">
-            <Search />
-          </Flex>
-          <Spacer display={{ base: 'none', lg: 'block' }} />
+          <Search />
         </Stack>
       </Portal>
       <Map />
