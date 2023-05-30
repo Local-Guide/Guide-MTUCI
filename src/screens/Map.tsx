@@ -118,7 +118,7 @@ export default function LeafletMap() {
       <Stairs />
       {allFloor.map((e) => (
         <PopupsHeading
-          key={e}
+          key={e.label + e.floor + JSON.stringify(e.bounds)}
           bounds={e.bounds}
           header={e.label}
           floor={e.floor}
@@ -127,7 +127,7 @@ export default function LeafletMap() {
       ))}
       {allContentFloor.map((e: any) => (
         <Popups
-          key={e}
+          key={e.label + e.floor + JSON.stringify(e.bounds)}
           bounds={e.bounds}
           header={e.label}
           content1={e.content1}
