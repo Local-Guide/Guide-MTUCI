@@ -24,6 +24,11 @@
   color: #bfc2c7 !important;
   margin-bottom: 5px;
 }
+
+.leaflet-control-zoom a {
+  height: 40px !important;
+  width: 40px !important;
+}
 .leaflet-control-zoom-out {
   background: #4a5568ab !important;
   border: 2px solid #2d3748ab !important;
@@ -47,7 +52,6 @@
 @media screen and (max-width: 991px) {
   .leaflet-touch .leaflet-bar a {
     line-height: normal;
-    padding-top: 2px;
   }
 }
 
