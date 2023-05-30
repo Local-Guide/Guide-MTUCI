@@ -1,4 +1,4 @@
-import { Box, Center, Icon } from '@chakra-ui/react'
+import { Center, Icon } from '@chakra-ui/react'
 
 import {
   chakraComponents,
@@ -7,7 +7,6 @@ import {
 } from 'chakra-react-select'
 
 import { SearchIcon } from '@chakra-ui/icons'
-import { useState } from 'react'
 
 import '@fontsource/inter'
 
@@ -21,6 +20,7 @@ import contentFloor2 from '../assets/popups/contentFloor2.json'
 import contentFloor3 from '../assets/popups/contentFloor3.json'
 import contentFloor4 from '../assets/popups/contentFloor4.json'
 import contentFloor5 from '../assets/popups/contentFloor5.json'
+import useActiveFloor from './stores/stairs'
 
 const groupedOptions = [
   { label: 'Этаж 0', options: floor0 },
@@ -122,8 +122,8 @@ function AwesomeSelect({ onChange }: AwesomeSelectProps) {
   )
 }
 
-export default function Search({ setActiveFloor }: any) {
-  // const [value, setValue] = useState<string>('')
+export default function Search() {
+  const { setActiveFloor } = useActiveFloor()
 
   const handleUpdateSelect: AwesomeSelectProps['onChange'] = (newValue) => {
     if (newValue) {
