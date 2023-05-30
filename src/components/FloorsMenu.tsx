@@ -29,22 +29,22 @@ export default function FloorsMenu({ activeFloor }: FloorsMenuProps) {
   useEffect(() => {
     switch (activeFloor) {
       case 0:
-        map.setView(new l.LatLng(-300, 0), 0)
+        map.setView(new l.LatLng(-140, 390), 1)
         break
       case 1:
-        map.setView(new l.LatLng(0, 0), 0)
+        map.setView(new l.LatLng(-140, 390), 1)
         break
       case 2:
-        map.setView(new l.LatLng(0, 0), 2)
+        map.setView(new l.LatLng(-140, 260), 1)
         break
       case 3:
-        map.setView(new l.LatLng(0, 0), 2)
+        map.setView(new l.LatLng(-140, 510), 1)
         break
       case 4:
-        map.setView(new l.LatLng(0, 0), 2)
+        map.setView(new l.LatLng(-140, 380), 1)
         break
       case 5:
-        map.setView(new l.LatLng(0, 0), 2)
+        map.setView(new l.LatLng(-140, 260), 1)
         break
     }
   }, [activeFloor, map])
