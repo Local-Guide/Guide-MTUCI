@@ -125,35 +125,15 @@ function AwesomeSelect({ onChange }: AwesomeSelectProps) {
 export default function Search({ setActiveFloor }: any) {
   // const [value, setValue] = useState<string>('')
 
-  const [selectedValue, setSelectedValue] = useState<{
-    text: string
-    bounds: any
-  }>()
   const handleUpdateSelect: AwesomeSelectProps['onChange'] = (newValue) => {
     if (newValue) {
-      setSelectedValue({
-        text: newValue.label,
-        bounds: (newValue as any).bounds,
-      })
       setActiveFloor((newValue as any).floor)
-    } else {
-      setSelectedValue(undefined)
     }
   }
 
   return (
     <Center w="100%">
       <AwesomeSelect onChange={handleUpdateSelect} />
-      {selectedValue && (
-        <Box>
-          Вы выбрали:{' '}
-          <Box as="b">
-            {selectedValue.bounds}
-            {/* вот тут всё ломается */}
-            {/* <Rectangle bounds={selectedValue.bounds} /> */}
-          </Box>
-        </Box>
-      )}
     </Center>
   )
 }
