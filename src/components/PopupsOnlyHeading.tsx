@@ -13,7 +13,7 @@ export default function PopupsHeading({
     marginLeft: '10px',
     marginRight: '10px',
   }
-  if (floor === checkFloor) {
+  if (Number(floor) === checkFloor) {
     return (
       <Rectangle bounds={bounds}>
         <Popup minWidth={70}>

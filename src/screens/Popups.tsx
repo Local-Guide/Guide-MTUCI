@@ -1,4 +1,5 @@
 import { Box } from '@chakra-ui/react'
+import { useEffect } from 'react'
 import { Popup, Rectangle } from 'react-leaflet'
 
 export default function Popups({
@@ -20,7 +21,7 @@ export default function Popups({
     marginTop: '3px',
   }
 
-  if (floor !== checkFloor) return null
+  if (Number(floor) !== checkFloor) return null
   if (content2 || additionalСontent) {
     return (
       <Rectangle bounds={bounds}>
