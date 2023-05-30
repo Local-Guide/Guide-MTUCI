@@ -1,5 +1,4 @@
 import { Box } from '@chakra-ui/react'
-import { useEffect } from 'react'
 import { Popup, Rectangle } from 'react-leaflet'
 
 export default function Popups({
