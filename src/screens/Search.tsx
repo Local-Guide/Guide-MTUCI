@@ -127,7 +127,7 @@ export default function Search() {
 
   const handleUpdateSelect: AwesomeSelectProps['onChange'] = (newValue) => {
     if (newValue) {
-      setActiveFloor((newValue as any).floor)
+      setActiveFloor(Number((newValue as any).floor))
     }
   }
 

@@ -1,4 +1,4 @@
-import { ChakraProvider, Portal, Stack, Flex, Spacer } from '@chakra-ui/react'
+import { ChakraProvider, Portal, Stack } from '@chakra-ui/react'
 
 // Screens
 import Map from './Map'
