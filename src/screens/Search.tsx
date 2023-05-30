@@ -8,7 +8,6 @@ import {
 
 import { SearchIcon } from '@chakra-ui/icons'
 import { useState } from 'react'
-import { Rectangle } from 'react-leaflet'
 
 import '@fontsource/inter'
 

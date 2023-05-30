@@ -20,7 +20,7 @@ export default function Popups({
     marginTop: '3px',
   }
 
-  if (floor != checkFloor) return null
+  if (floor !== checkFloor) return null
   if (content2 || additionalСontent) {
     return (
       <Rectangle bounds={bounds}>
