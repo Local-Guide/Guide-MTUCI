@@ -15,32 +15,18 @@ import {
 
 import Stairs from './Stairs'
 import Popups from './Popups'
-import PopupsHeading from './PopupsOnlyHeading'
 
 // Styles
 import 'leaflet/dist/leaflet.css'
 import './leafletStyles.css'
 
-import floor0 from '../assets/popups/floor0.json'
-import floor1 from '../assets/popups/floor1.json'
-import floor2 from '../assets/popups/floor2.json'
-import floor3 from '../assets/popups/floor3.json'
-import floor4 from '../assets/popups/floor4.json'
-import floor5 from '../assets/popups/floor5.json'
 import contentFloor2 from '../assets/popups/contentFloor2.json'
 import contentFloor3 from '../assets/popups/contentFloor3.json'
 import contentFloor4 from '../assets/popups/contentFloor4.json'
 import contentFloor5 from '../assets/popups/contentFloor5.json'
 import useActiveFloor from './stores/stairs'
+import FloorsMenu from '../components/FloorsMenu'
 
-const allFloor = [
-  ...floor0,
-  ...floor1,
-  ...floor2,
-  ...floor3,
-  ...floor4,
-  ...floor5,
-]
 const allContentFloor = [
   ...contentFloor2,
   ...contentFloor3,
@@ -51,8 +37,8 @@ const allContentFloor = [
 export default function LeafletMap() {
   const activeFloor = useActiveFloor((state) => state.activeFloor)
   const [center, setCenter] = useState<{ x: number; y: number }>({
-    x: 533,
-    y: -253,
+    x: 350,
+    y: -100,
   })
   // const [maxBound, setMaxBound] = useState<[x: number, y: number]>([
   //   -253,
@@ -67,34 +53,6 @@ export default function LeafletMap() {
   //   3: `${process.env.PUBLIC_URL}/imgs/3/{z}/{x}-{y}.png`,
   // }
 
-  // useEffect(() => {
-  //   switch (activeFloor) {
-  //     case '0':
-  //       setCenter({ x: 533, y: -253 })
-  //       setZoom(1)
-  //       break
-  //     case '1':
-  //       setCenter({ x: 385, y: -130 })
-  //       setZoom(1)
-  //       break
-  //     case '2':
-  //       setCenter({ x: 533, y: -253 })
-  //       setZoom(1)
-  //       break
-  //     case '3':
-  //       setCenter({ x: 512, y: -130 })
-  //       setZoom(1)
-  //       break
-  //     case '4':
-  //       setCenter({ x: 385, y: -130 })
-  //       setZoom(1)
-  //       break
-  //     case '5':
-  //       setCenter({ x: 260, y: -130 })
-  //       setZoom(1)
-  //       break
-  //   }
-  // })
   const ref = useRef<any>(null)
   useEffect(() => {
     if (ref.current) {
@@ -116,15 +74,7 @@ export default function LeafletMap() {
     >
       <MapInfo setZoom={setZoom} setCenter={setCenter} />
       <Stairs />
-      {allFloor.map((e) => (
-        <PopupsHeading
-          key={e.label + e.floor + JSON.stringify(e.bounds)}
-          bounds={e.bounds}
-          header={e.label}
-          floor={e.floor}
-          checkFloor={activeFloor}
-        />
-      ))}
+      <FloorsMenu activeFloor={activeFloor} />
       {allContentFloor.map((e: any) => (
         <Popups
           key={e.label + e.floor + JSON.stringify(e.bounds)}
